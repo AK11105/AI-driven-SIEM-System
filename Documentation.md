@@ -1,4 +1,4 @@
-#SIEM Documentation
+# SIEM Documentation
 
 The BCCC-CIC-IDS-2017 dataset is a benchmark dataset for intrusion detection systems (IDS), developed by the Canadian Institute for Cybersecurity (CIC) in collaboration with BCCC (Big Data Cybersecurity Canada). It is designed to simulate real-world network traffic, including both benign (normal) and malicious activities.
 
