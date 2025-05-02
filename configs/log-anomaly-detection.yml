@@ -1,0 +1,3 @@
+data:
+  raw_data_path: data/logs/raw/
+  processed_data_path: data/logs/processed/

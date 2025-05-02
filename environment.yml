@@ -1,0 +1,21 @@
+name: ai-siem
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - jupyterlab
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pytorch
+  - torchvision
+  - yaml
+  - pip
+  - pip:
+      - logparser               # for log parsing like Drain/Spell
+      - rich                    # pretty logging
+      - tqdm                   # progress bars
+      - ipywidgets              # interactive widgets in Jupyter

@@ -1,0 +1,9 @@
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.log
+.env
+*.csv
+*.json
+tracebench/
+notebooks/
