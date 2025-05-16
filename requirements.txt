@@ -14,6 +14,7 @@ Brotli @ file:///C:/b/abs_c415aux9ra/croot/brotli-split_1736182803933/work
 certifi @ file:///C:/b/abs_3beajm7umk/croot/certifi_1745939228545/work/certifi
 cffi @ file:///C:/b/abs_29_b57if3f/croot/cffi_1736184144340/work
 charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
+click==8.2.0
 colorama @ file:///C:/b/abs_a9ozq0l032/croot/colorama_1672387194846/work
 comm @ file:///C:/b/abs_67a8058udb/croot/comm_1709322909844/work
 contourpy @ file:///C:/b/abs_f2u2o_8s9g/croot/contourpy_1732540071787/work
@@ -37,6 +38,7 @@ h5py==3.13.0
 httpcore @ file:///C:/b/abs_55n7g233bw/croot/httpcore_1706728507241/work
 httpx @ file:///C:/b/abs_43e135shby/croot/httpx_1723474830126/work
 idna @ file:///C:/b/abs_aad84bnnw5/croot/idna_1714398896795/work
+iniconfig==2.1.0
 ipykernel @ file:///C:/b/abs_6c9ggygp01/croot/ipykernel_1737660720620/work
 ipython @ file:///C:/b/abs_8eyhzleyrk/croot/ipython_1734548134403/work
 ipywidgets==8.1.6
@@ -78,6 +80,7 @@ nbconvert @ file:///C:/b/abs_c27_60dzt8/croot/nbconvert-meta_1741191385337/work
 nbformat @ file:///C:/b/abs_c2jkw46etm/croot/nbformat_1728050303821/work
 nest-asyncio @ file:///C:/b/abs_65d6lblmoi/croot/nest-asyncio_1708532721305/work
 networkx @ file:///C:/b/abs_b054htfn9t/croot/networkx_1737043671910/work
+nltk==3.9.1
 notebook_shim @ file:///C:/b/abs_9ctyfgpncn/croot/notebook-shim_1741707829491/work
 numexpr @ file:///C:/b/abs_05o8p7bfml/croot/numexpr_1730215959182/work
 numpy @ file:///C:/b/abs_c1ywpu18ar/croot/numpy_and_numpy_base_1708638681471/work/dist/numpy-1.26.4-cp310-cp310-win_amd64.whl#sha256=ebb5aa2b36d8afa5ec3231c19e5a1fc75b6d85e7db483f0fb9e77dad58469977
@@ -91,6 +94,7 @@ parso @ file:///C:/b/abs_834b4mj92b/croot/parso_1733963322289/work
 pexpect==4.9.0
 pillow @ file:///C:/b/abs_68t826txdy/croot/pillow_1744613085333/work
 platformdirs @ file:///C:/b/abs_ddh15014or/croot/platformdirs_1744273060660/work
+pluggy==1.6.0
 prometheus_client @ file:///C:/b/abs_8b175q_ub8/croot/prometheus_client_1744271638821/work
 prompt-toolkit @ file:///C:/b/abs_68uwr58ed1/croot/prompt-toolkit_1704404394082/work
 protobuf==5.29.4
@@ -99,10 +103,12 @@ ptyprocess==0.7.0
 pure-eval @ file:///opt/conda/conda-bld/pure_eval_1646925070566/work
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
 Pygments @ file:///C:/b/abs_e4bg5vh5j_/croot/pygments_1744667628203/work
+pyIDS==0.2.2
 pyparsing @ file:///C:/b/abs_40z8gyj9wi/croot/pyparsing_1731445739241/work
 PyQt6==6.7.1
 PyQt6_sip @ file:///C:/b/abs_f47pmp6xmn/croot/pyqt-split_1744804513582/work/pyqt_sip
 PySocks @ file:///C:/ci_310/pysocks_1642089375450/work
+pytest==8.3.5
 python-dateutil @ file:///C:/b/abs_3au_koqnbs/croot/python-dateutil_1716495777160/work
 python-json-logger @ file:///C:/b/abs_0cm_mnox0z/croot/python-json-logger_1734370042436/work
 pytz @ file:///C:/b/abs_6ap4tsz1ox/croot/pytz_1713974360290/work
@@ -152,3 +158,4 @@ Werkzeug==3.1.3
 widgetsnbextension==4.0.14
 win-inet-pton @ file:///C:/ci_310/win_inet_pton_1642658466512/work
 wrapt==1.17.2
+xmltodict==0.14.2
