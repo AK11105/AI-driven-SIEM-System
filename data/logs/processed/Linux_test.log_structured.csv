@@ -1,0 +1,3 @@
+"LineId","Month","Date","Time","Level","Component","PID","Content","EventId","EventTemplate"
+"1","May","17","02:46:33","192-168-37-133","sshd","12281","pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=ubuntu","E0","pam_unix(sshd: auth): authentication failure; logname= uid= <*> euid= <*> tty= ssh ruser= rhost= <*> user= ubuntu"
+"2","May","17","02:46:35","192-168-37-133","sshd","12281","Failed password for ubuntu from 127.0.0.1 port 40366 ssh2","E1","Failed password for ubuntu from <*> port <*> ssh2"

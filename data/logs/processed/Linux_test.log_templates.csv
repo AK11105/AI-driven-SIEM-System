@@ -1,0 +1,3 @@
+"EventId","EventTemplate","Occurrences"
+"E0","('pam_unix(sshd:', 'auth):', 'authentication', 'failure;', 'logname=', 'uid=', '<*>', 'euid=', '<*>', 'tty=', 'ssh', 'ruser=', 'rhost=', '<*>', 'user=', 'ubuntu')","1"
+"E1","('Failed', 'password', 'for', 'ubuntu', 'from', '<*>', 'port', '<*>', 'ssh2')","1"
