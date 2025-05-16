@@ -9,7 +9,7 @@ from src.logAnomalyDetection.Brain import LogParser
 dataset    = 'Linux'
 input_dir  = '../../data/logs/raw/'     # Where your Linux.log is stored
 output_dir = '../../data/logs/processed/'  # Output goes here
-log_file   = 'Linux.log'                   # Your actual log file
+log_file   = 'Linux_test.log'                   # Your actual log file
 
 # You must define the log format according to your log file pattern
 # Example: '<Date> <Time>,<Millis> <Level> <Content>'

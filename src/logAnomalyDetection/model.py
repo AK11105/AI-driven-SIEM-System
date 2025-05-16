@@ -1,185 +1,163 @@
 import pandas as pd
-import numpy as np
 import torch
 import torch.nn as nn
-import torch.optim as optim
+import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
-from sklearn.utils.class_weight import compute_class_weight
+from sklearn.metrics import classification_report
 from collections import Counter
 from tqdm import tqdm
+import json
 
-# ---------------------
-# Step 1: Load CSV Logs
-# ---------------------
+# 1. Data Loading and Preprocessing
 df = pd.read_csv("data/logs/processed/Linux.log_structured.csv")
-texts = df['Content'].astype(str).tolist()
-labels = df['Level'].map(lambda x: 0 if x == 'log' else 1).tolist()
+texts = df["EventTemplate"].str.replace("<*>", "[WILDCARD]").tolist()
 
-# ---------------------
-# Step 2: Build Vocabulary
-# ---------------------
+# Define your multi-class labels
+anomaly_classes = [
+    'Normal',
+    'Memory Error',
+    'Authentication Error',
+    'File System Error',
+    'Network Error',
+    'Permission Error'
+]
+
+def classify_multiclass(event_template):
+    et = event_template.lower()
+    if any(k in et for k in ['out of memory', 'page allocation failure', 'dma timeout']):
+        return 1  # Memory Error
+    elif any(k in et for k in ['authentication failure', 'invalid username', 'kerberos']):
+        return 2  # Auth Error
+    elif any(k in et for k in ['no such file', 'failed command', 'status timeout', 'drive not ready']):
+        return 3  # File System Error
+    elif any(k in et for k in ['connection timed out', 'connection from', 'peer died']):
+        return 4  # Network Error
+    elif any(k in et for k in ['permission denied', 'operation not supported', 'selinux']):
+        return 5  # Permission Error
+    else:
+        return 0  # Normal
+
+labels = df["EventTemplate"].apply(classify_multiclass).tolist()
+encoded_labels = torch.tensor(labels, dtype=torch.long)
+
+# Tokenization
 def tokenize(text):
-    return text.lower().split()
+    return text.lower().replace("(", "").replace(")", "").replace("'", "").replace(",", "").split()
 
-tokenized_texts = [tokenize(text) for text in texts]
-word_counts = Counter(token for sentence in tokenized_texts for token in sentence)
-vocab = {word: idx + 2 for idx, (word, _) in enumerate(word_counts.items())}
-vocab['<PAD>'] = 0
-vocab['<UNK>'] = 1
+tokenized = [tokenize(text) for text in texts]
+counter = Counter(token for seq in tokenized for token in seq)
+vocab = {'<PAD>': 0, '<UNK>': 1}
+for word, _ in counter.most_common(10000):
+    vocab[word] = len(vocab)
 
-def encode(text, vocab):
-    return [vocab.get(word, vocab['<UNK>']) for word in tokenize(text)]
+with open("vocabulary.json", "w") as f:
+    json.dump(vocab, f)
+print("Vocabulary saved to vocab.json")
 
-encoded_sequences = [encode(text, vocab) for text in texts]
+MAX_LEN = 50
+def encode_sequence(tokens):
+    encoded = [vocab.get(token, vocab['<UNK>']) for token in tokens]
+    return encoded[:MAX_LEN] + [0]*(MAX_LEN - len(encoded)) if len(encoded) < MAX_LEN else encoded[:MAX_LEN]
 
-# ---------------------
-# Step 3: Create Sliding Windows
-# ---------------------
-def create_windows(sequences, labels, window_size=6, max_len=20):
-    X, y = [], []
-    for i in range(len(sequences) - window_size + 1):
-        window = sequences[i:i + window_size]
-        padded = [seq[:max_len] + [0] * (max_len - len(seq[:max_len])) for seq in window]
-        X.append(padded)
-        y.append(labels[i + window_size - 1])
-    return np.array(X), np.array(y)
+encoded_texts = [encode_sequence(seq) for seq in tokenized]
+padded_texts = torch.tensor(encoded_texts)
 
-window_size = 6
-max_len = 20
-X, y = create_windows(encoded_sequences, labels, window_size, max_len)
-
-# ---------------------
-# Step 4: Dataset and DataLoader
-# ---------------------
+# 2. Dataset
 class LogDataset(Dataset):
-    def __init__(self, X, y):
-        self.X = torch.tensor(X, dtype=torch.long)
-        self.y = torch.tensor(y, dtype=torch.float32)
+    def __init__(self, inputs, labels):
+        self.inputs = inputs
+        self.labels = labels
+    def __len__(self): return len(self.inputs)
+    def __getitem__(self, idx): return self.inputs[idx], self.labels[idx]
 
-    def __len__(self):
-        return len(self.X)
-
-    def __getitem__(self, idx):
-        return self.X[idx], self.y[idx]
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    padded_texts, encoded_labels, test_size=0.2, stratify=labels, random_state=42
+)
 
 train_dataset = LogDataset(X_train, y_train)
 test_dataset = LogDataset(X_test, y_test)
 
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=32)
+def collate_fn(batch):
+    inputs, labels = zip(*batch)
+    return torch.stack(inputs), torch.tensor(labels)
 
-# ---------------------
-# Step 5: Model Definition (CNN + BiLSTM + Dropout + BatchNorm)
-# ---------------------
-class CNN_BiLSTM(nn.Module):
-    def __init__(self, vocab_size, embed_dim=128, cnn_out=64, lstm_hidden=64):
-        super(CNN_BiLSTM, self).__init__()
-        self.embed = nn.Embedding(vocab_size, embed_dim, padding_idx=0)
-        self.cnn = nn.Conv1d(embed_dim, cnn_out, kernel_size=3, padding=1)
-        self.bn_cnn = nn.BatchNorm1d(cnn_out)
-        self.pool = nn.AdaptiveMaxPool1d(1)
-        self.lstm = nn.LSTM(input_size=cnn_out, hidden_size=lstm_hidden, batch_first=True, bidirectional=True)
-        self.fc1 = nn.Linear(lstm_hidden * 2, 64)
-        self.bn_fc1 = nn.BatchNorm1d(64)
-        self.dropout = nn.Dropout(0.5)
-        self.fc2 = nn.Linear(64, 1)
-        # NO sigmoid here because we use BCEWithLogitsLoss
+train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, collate_fn=collate_fn)
+test_loader = DataLoader(test_dataset, batch_size=64, collate_fn=collate_fn)
 
-    def forward(self, x):  # x: (B, T, L)
-        B, T, L = x.shape
-        x = self.embed(x.view(-1, L))        # (B*T, L, D)
-        x = x.permute(0, 2, 1)               # (B*T, D, L)
-        x = self.cnn(x)                      # (B*T, C, L)
-        x = self.bn_cnn(x)
-        x = torch.relu(x)
-        x = self.pool(x).squeeze(-1)         # (B*T, C)
-        x = x.view(B, T, -1)                 # (B, T, C)
-        _, (h, _) = self.lstm(x)             # h: (num_layers*2, B, H)
-        h = torch.cat((h[-2], h[-1]), dim=1) # (B, 2*H)
-        h = torch.relu(self.fc1(h))
-        h = self.bn_fc1(h)
-        h = self.dropout(h)
-        out = self.fc2(h).squeeze(1)         # (B,)
-        return out
+# 3. CNN-LSTM Model for Multi-Class
+class CNNLSTM(nn.Module):
+    def __init__(self, vocab_size, embed_dim, num_classes):
+        super(CNNLSTM, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=0)
+        self.conv1 = nn.Conv1d(embed_dim, 128, kernel_size=3, padding=1)
+        self.lstm = nn.LSTM(128, 64, batch_first=True)
+        self.fc = nn.Linear(64, num_classes)
+    def forward(self, x):
+        x = self.embedding(x)
+        x = x.permute(0, 2, 1)
+        x = F.relu(self.conv1(x))
+        x = x.permute(0, 2, 1)
+        _, (hn, _) = self.lstm(x)
+        return self.fc(hn.squeeze(0))  # shape: (batch_size, num_classes)
 
-# ---------------------
-# Step 6: Setup device, model, loss, optimizer, scheduler
-# ---------------------
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+# 4. Training Setup
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = CNNLSTM(vocab_size=len(vocab), embed_dim=100, num_classes=len(anomaly_classes)).to(device)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.CrossEntropyLoss()
 
-# Compute pos_weight for imbalance
-class_weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
-pos_weight = torch.tensor([class_weights[1]/class_weights[0]], dtype=torch.float32).to(device)
-
-model = CNN_BiLSTM(vocab_size=len(vocab)).to(device)
-criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
-optimizer = optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-5)
-scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=2, factor=0.5)
-
-# ---------------------
-# Step 7: Training with Early Stopping
-# ---------------------
+# 5. Training Loop
 best_val_loss = float('inf')
-patience, trials = 5, 0
-num_epochs = 30
-
-for epoch in range(1, num_epochs + 1):
+best_model_path = "best_cnn_lstm_multiclass-try.pth"
+print("Training...")
+for epoch in range(10):
     model.train()
     total_loss = 0
-    for X_batch, y_batch in tqdm(train_loader, desc=f"Epoch {epoch}"):
-        X_batch, y_batch = X_batch.to(device), y_batch.to(device)
+    pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}")
+    for batch_x, batch_y in pbar:
+        batch_x, batch_y = batch_x.to(device), batch_y.to(device)
         optimizer.zero_grad()
-        preds = model(X_batch)
-        loss = criterion(preds, y_batch)
+        outputs = model(batch_x)
+        loss = criterion(outputs, batch_y)
         loss.backward()
         optimizer.step()
         total_loss += loss.item()
-
+        pbar.set_postfix(loss=total_loss / (pbar.n+1))
+    
     avg_train_loss = total_loss / len(train_loader)
-    print(f"Epoch {epoch}, Train Loss: {avg_train_loss:.4f}")
 
     # Validation
     model.eval()
     val_loss = 0
     with torch.no_grad():
-        for X_batch, y_batch in test_loader:
-            X_batch, y_batch = X_batch.to(device), y_batch.to(device)
-            preds = model(X_batch)
-            loss = criterion(preds, y_batch)
+        for batch_x, batch_y in test_loader:
+            batch_x, batch_y = batch_x.to(device), batch_y.to(device)
+            outputs = model(batch_x)
+            loss = criterion(outputs, batch_y)
             val_loss += loss.item()
-    val_loss /= len(test_loader)
-    print(f"Epoch {epoch}, Validation Loss: {val_loss:.4f}")
+    avg_val_loss = val_loss / len(test_loader)
+    
+    print(f"Epoch {epoch+1} - Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f}")
+    if avg_val_loss < best_val_loss:
+        best_val_loss = avg_val_loss
+        torch.save(model.state_dict(), best_model_path)
+        print(f"Best model saved at epoch {epoch+1} with val loss {best_val_loss:.4f}")
 
-    scheduler.step(val_loss)
-
-    # Early stopping check
-    if val_loss < best_val_loss:
-        best_val_loss = val_loss
-        trials = 0
-        torch.save(model.state_dict(), "best_cnn_bilstm_model.pth")
-        print("Model saved.")
-    else:
-        trials += 1
-        if trials >= patience:
-            print("Early stopping triggered.")
-            break
-
-# ---------------------
-# Step 8: Evaluation (Load best model)
-# ---------------------
-model.load_state_dict(torch.load("best_cnn_bilstm_model.pth"))
+# 6. Evaluation
+model.load_state_dict(torch.load(best_model_path))
 model.eval()
-correct = 0
-total = 0
-with torch.no_grad():
-    for X_batch, y_batch in test_loader:
-        X_batch, y_batch = X_batch.to(device), y_batch.to(device)
-        preds = torch.sigmoid(model(X_batch))
-        preds = (preds > 0.5).float()
-        correct += (preds == y_batch).sum().item()
-        total += y_batch.size(0)
 
-print(f"\nTest Accuracy: {correct / total:.4f}")
+all_preds = []
+all_targets = []
+
+with torch.no_grad():
+    for batch_x, batch_y in test_loader:
+        batch_x = batch_x.to(device)
+        outputs = model(batch_x)
+        preds = torch.argmax(outputs, dim=1)
+        all_preds.extend(preds.cpu().numpy())
+        all_targets.extend(batch_y.numpy())
+
+print("\nClassification Report:")
+print(classification_report(all_targets, all_preds, target_names=anomaly_classes))
