@@ -11,7 +11,7 @@ from datetime import datetime
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load vocab
-with open("vocab.json", "r") as f:
+with open("CNN-LSTM/vocab.json", "r") as f:
     vocab = json.load(f)
 
 MAX_LEN = 50
@@ -49,7 +49,7 @@ class CNNLSTM(nn.Module):
 num_classes = 6
 embed_dim = 100
 model = CNNLSTM(vocab_size=len(vocab), embed_dim=embed_dim, num_classes=num_classes)
-model.load_state_dict(torch.load("best_cnn_lstm_multiclass.pth", map_location=device))
+model.load_state_dict(torch.load("CNN-LSTM/best_cnn_lstm_multiclass.pth", map_location=device))
 model.to(device)
 model.eval()
 
@@ -62,7 +62,9 @@ anomaly_classes = [
     'Permission Error'
 ]
 
-def predict_and_print(event_template: str, raw_content: str, timestamp: str = None):
+import requests
+
+def predict_and_send(event_template: str, raw_content: str, timestamp: str = None):
     tokens = tokenize(event_template)
     input_tensor = encode_sequence(tokens, vocab).to(device)
 
@@ -74,13 +76,23 @@ def predict_and_print(event_template: str, raw_content: str, timestamp: str = No
     label = anomaly_classes[pred_class]
 
     result = {
-        "log": raw_content,           # print raw log message (Content)
+        "log": raw_content,
         "classification": label,
         "timestamp": timestamp if timestamp else datetime.utcnow().isoformat() + "Z"
     }
 
-    print(result)
+    try:
+        # Send POST request to your Express backend
+        response = requests.post("http://localhost:5000/api/logs", json=result)
+        if response.status_code == 200:
+            print(f"✅ Log sent successfully: {result}")
+        else:
+            print(f"❌ Failed to send log: {response.status_code}, {response.text}")
+    except Exception as e:
+        print(f"❌ Exception during sending log: {e}")
+
     return result
+
 
 def process_logs_from_csv(csv_path, event_template_col='EventTemplate', content_col='Content', timestamp_col='Time'):
     if not os.path.isfile(csv_path):
@@ -103,7 +115,7 @@ def process_logs_from_csv(csv_path, event_template_col='EventTemplate', content_
                 print(f"Skipping row {count+1} due to missing data")
                 continue
 
-            predict_and_print(event_template, raw_content, timestamp)
+            predict_and_send(event_template, raw_content, timestamp)
             count += 1
         print(f"Processed {count} log entries.")
 
