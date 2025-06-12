@@ -1,3 +1,110 @@
-data:
-  raw_data_path: data/logs/raw/
-  processed_data_path: data/logs/processed/
+# AI-driven SIEM Log Anomaly Detection Configuration
+
+# Data paths configuration
+data_paths:
+  input_dir: "data/logs/raw/"
+  output_dir: "data/logs/processed/"
+  reports_dir: "reports/logAnomalyDetection/"
+
+# Parsing configuration (Brain algorithm)
+parsing:
+  algorithm: "Brain"
+  dataset: "Linux"
+  parameters:
+    depth: 4
+    st: 0.4
+    maxChild: 100
+    mergeThreshold: 0.9
+
+# Advanced detection configuration
+detection:
+  # Model and artifact paths
+  model_path: "src/logAnomalyDetection/LSTM_AE/"
+  output_path: "reports/logAnomalyDetection/"
+  
+  # Sequence processing parameters
+  seq_len: 8
+  stride: 8
+  batch_size: 32
+  
+  # Anomaly detection thresholds
+  anomaly_threshold_percentile: 95
+  
+  # Severity classification
+  severity_percentiles: [85, 95, 99]
+  severity_labels: ["Low", "Medium", "High", "Critical"]
+  
+  # Explanation generation
+  explanation_top_k: 10
+  explain_high_severity_only: true
+  
+  # Feature engineering
+  max_tfidf_features: 50
+  max_categorical_features: 50
+  
+  # Classification rules
+  enable_rule_based_classification: true
+  classification_confidence_threshold: 0.7
+
+# Pipeline execution options
+execution:
+  # Memory and performance
+  enable_gpu: false
+  max_memory_usage: "4GB"
+  parallel_processing: false
+  
+  # Error handling
+  continue_on_errors: true
+  max_retries: 3
+  
+  # Validation
+  validate_inputs: true
+  validate_outputs: true
+
+# Output configuration
+output:
+  # File generation
+  save_detailed_results: true
+  save_explanations: true
+  save_classifications: true
+  save_raw_scores: false
+  
+  # Report generation
+  generate_summary_report: true
+  generate_detailed_report: true
+  
+  # Format options
+  output_format: "json"
+  compress_outputs: false
+  
+  # Retention
+  keep_intermediate_files: false
+  max_output_files: 100
+
+# Logging and monitoring
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_logging: false
+  log_file: "logs/pipeline.log"
+  
+# Alerting thresholds (for future SIEM integration)
+alerting:
+  critical_anomaly_threshold: 1
+  high_anomaly_threshold: 5
+  anomaly_rate_threshold: 10.0
+  
+  # Alert types
+  enable_email_alerts: false
+  enable_webhook_alerts: false
+  enable_syslog_alerts: false
+
+# Performance monitoring
+monitoring:
+  track_processing_time: true
+  track_memory_usage: true
+  track_model_performance: true
+  
+  # Metrics collection
+  collect_pipeline_metrics: true
+  metrics_retention_days: 30

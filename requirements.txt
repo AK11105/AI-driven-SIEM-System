@@ -37,6 +37,7 @@ h11 @ file:///C:/b/abs_1czwoyexjf/croot/h11_1706652332846/work
 h5py==3.13.0
 httpcore @ file:///C:/b/abs_55n7g233bw/croot/httpcore_1706728507241/work
 httpx @ file:///C:/b/abs_43e135shby/croot/httpx_1723474830126/work
+huggingface-hub==0.32.5
 idna @ file:///C:/b/abs_aad84bnnw5/croot/idna_1714398896795/work
 iniconfig==2.1.0
 ipykernel @ file:///C:/b/abs_6c9ggygp01/croot/ipykernel_1737660720620/work
@@ -75,6 +76,7 @@ mkl_random @ file:///C:/Users/dev-admin/mkl/mkl_random_1730822522280/work
 ml_dtypes==0.5.1
 mpmath @ file:///C:/b/abs_7833jrbiox/croot/mpmath_1690848321154/work
 namex==0.0.9
+narwhals==1.42.0
 nbclient @ file:///C:/b/abs_a09c4t3h8x/croot/nbclient_1741124030330/work
 nbconvert @ file:///C:/b/abs_c27_60dzt8/croot/nbconvert-meta_1741191385337/work
 nbformat @ file:///C:/b/abs_c2jkw46etm/croot/nbformat_1728050303821/work
@@ -94,6 +96,7 @@ parso @ file:///C:/b/abs_834b4mj92b/croot/parso_1733963322289/work
 pexpect==4.9.0
 pillow @ file:///C:/b/abs_68t826txdy/croot/pillow_1744613085333/work
 platformdirs @ file:///C:/b/abs_ddh15014or/croot/platformdirs_1744273060660/work
+plotly==6.1.2
 pluggy==1.6.0
 prometheus_client @ file:///C:/b/abs_8b175q_ub8/croot/prometheus_client_1744271638821/work
 prompt-toolkit @ file:///C:/b/abs_68uwr58ed1/croot/prompt-toolkit_1704404394082/work
@@ -123,10 +126,12 @@ rfc3339-validator @ file:///C:/b/abs_ddfmseb_vm/croot/rfc3339-validator_16830770
 rfc3986-validator @ file:///C:/b/abs_6e9azihr8o/croot/rfc3986-validator_1683059049737/work
 rich==14.0.0
 rpds-py @ file:///C:/b/abs_0c6z5kcdb6/croot/rpds-py_1736545465023/work
+safetensors==0.5.3
 scikit-learn @ file:///C:/b/abs_0dwalqot3o/croot/scikit-learn_1737988780693/work/dist/scikit_learn-1.6.1-cp310-cp310-win_amd64.whl#sha256=d1337168ee64380b26e38a8be42467bd0f3a1db3d3118e6244e11a2be8b05064
 scipy @ file:///C:/b/abs_57lp_c7nt4/croot/scipy_1743153260151/work/dist/scipy-1.15.2-cp310-cp310-win_amd64.whl#sha256=d1f5c7eabce60202ed216f4efcbfb2250f07e0525e4da7546b2e91c257cfd903
 seaborn @ file:///C:/b/abs_522_0_dy9p/croot/seaborn_1741187268016/work
 Send2Trash @ file:///C:/b/abs_7e73ol18dl/croot/send2trash_1736542724140/work
+sentence-transformers==4.1.0
 sip @ file:///C:/b/abs_5cto136kse/croot/sip_1738856220313/work
 six @ file:///C:/b/abs_149wuyuo1o/croot/six_1744271521515/work
 sniffio @ file:///C:/b/abs_3akdewudo_/croot/sniffio_1705431337396/work
@@ -141,12 +146,14 @@ termcolor==3.1.0
 terminado @ file:///C:/b/abs_25nakickad/croot/terminado_1671751845491/work
 threadpoolctl @ file:///C:/b/abs_def0dwqlft/croot/threadpoolctl_1719407816649/work
 tinycss2 @ file:///C:/b/abs_df38owi5ma/croot/tinycss2_1738337725183/work
+tokenizers==0.21.1
 tomli @ file:///C:/Windows/TEMP/abs_ac109f85-a7b3-4b4d-bcfd-52622eceddf0hy332ojo/croots/recipe/tomli_1657175513137/work
 torch @ file:///C:/b/abs_fakvb73nko/croot/pytorch-select_1730848725921/work
 torchvision @ file:///C:/b/abs_36wv6_sd88/croot/torchvision_1722956313919/work
 tornado @ file:///C:/b/abs_7cyu943ybx/croot/tornado_1733960510898/work
 tqdm==4.67.1
 traitlets @ file:///C:/b/abs_bfsnoxl4pq/croot/traitlets_1718227069245/work
+transformers==4.52.4
 typing_extensions @ file:///C:/b/abs_0ffjxtihug/croot/typing_extensions_1734714875646/work
 tzdata @ file:///croot/python-tzdata_1746123641790/work
 unicodedata2 @ file:///C:/b/abs_dfnftvxi4k/croot/unicodedata2_1736543771112/work

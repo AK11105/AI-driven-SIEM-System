@@ -1,0 +1,10 @@
+{
+  "pipeline_status": "SUCCESS",
+  "timestamp": "2025-06-12T22:51:53.571362",
+  "total_logs": 69,
+  "anomalies_detected": 1,
+  "anomaly_rate": 12.5,
+  "high_severity_count": 0,
+  "critical_alerts": 0,
+  "recommendation": "INVESTIGATE"
+}

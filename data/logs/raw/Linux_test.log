@@ -1,2 +1,69 @@
-May 17 02:46:33 192-168-37-133 sshd[12281]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=ubuntu
-May 17 02:46:35 192-168-37-133 sshd[12281]: Failed password for ubuntu from 127.0.0.1 port 40366 ssh2
+2025-06-12T13:54:59.822Z 192-168-37-132 /var/log/auth.log: Jun 12 19:24:50 192-168-37-132 gdm-password]: gkr-pam: unlocked login keyring
+Jun 12 19:24:58 192-168-37-132 gnome-shell[2375]: Window manager warning: last_user_time (6947243) is greater than comparison timestamp (6946643).  This most likely represents a buggy client sending inaccurate timestamps in messages such as _NET_ACTIVE_WINDOW.  Trying to work around...
+Jun 12 19:24:58 192-168-37-132 gnome-shell[2375]: Window manager warning: W4 appears to be one of the offending windows with a timestamp of 6947243.  Working around...
+Jun 12 19:24:59 192-168-37-132 gnome-shell[2375]: Window manager warning: last_user_time (6947305) is greater than comparison timestamp (6947146).  This most likely represents a buggy client sending inaccurate timestamps in messages such as _NET_ACTIVE_WINDOW.  Trying to work around...
+Jun 12 19:24:59 192-168-37-132 gnome-shell[2375]: Window manager warning: W4 appears to be one of the offending windows with a timestamp of 6947305.  Working around...
+Jun 12 19:25:07 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Activating service name='org.gnome.ArchiveManager1' requested by ':1.159' (uid=1000 pid=7578 comm="gjs /usr/share/gnome-shell/extensions/ding@rasters" label="unconfined")
+Jun 12 19:25:08 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Successfully activated service 'org.gnome.ArchiveManager1'
+Jun 12 19:25:08 192-168-37-132 gnome-shell[2375]: DING: Detected async api for thumbnails
+Jun 12 19:25:10 192-168-37-132 gnome-shell[2375]: DING: GNOME nautilus 42.6
+Jun 12 19:25:17 192-168-37-132 systemd[1]: fprintd.service: Deactivated successfully.
+Jun 12 19:25:17 192-168-37-132 systemd[1]: fprintd.service: Consumed 1.989s CPU time.
+Jun 12 19:27:35 192-168-37-132 sshd[7693]: Invalid user invaliduser from 127.0.0.1 port 43152
+Jun 12 19:27:40 192-168-37-132 sshd[7693]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:27:40 192-168-37-132 sshd[7693]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:27:42 192-168-37-132 sshd[7693]: Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2
+Jun 12 19:27:44 192-168-37-132 sshd[7693]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:27:45 192-168-37-132 sshd[7693]: Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2
+Jun 12 19:27:48 192-168-37-132 sshd[7693]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:27:50 192-168-37-132 sshd[7693]: Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2
+Jun 12 19:27:50 192-168-37-132 sshd[7693]: Connection closed by invalid user invaliduser 127.0.0.1 port 43152 [preauth]
+Jun 12 19:27:50 192-168-37-132 sshd[7693]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:27:50 192-168-37-132 sshd[7696]: Invalid user invaliduser from 127.0.0.1 port 44412
+Jun 12 19:27:52 192-168-37-132 sshd[7696]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:27:52 192-168-37-132 sshd[7696]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:27:54 192-168-37-132 sshd[7696]: Failed password for invalid user invaliduser from 127.0.0.1 port 44412 ssh2
+Jun 12 19:27:56 192-168-37-132 sshd[7696]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:27:57 192-168-37-132 sshd[7696]: Failed password for invalid user invaliduser from 127.0.0.1 port 44412 ssh2
+Jun 12 19:27:59 192-168-37-132 sshd[7696]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:28:01 192-168-37-132 sshd[7696]: Failed password for invalid user invaliduser from 127.0.0.1 port 44412 ssh2
+Jun 12 19:28:01 192-168-37-132 sshd[7696]: Connection closed by invalid user invaliduser 127.0.0.1 port 44412 [preauth]
+Jun 12 19:28:01 192-168-37-132 sshd[7696]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:28:01 192-168-37-132 sshd[7704]: Invalid user invaliduser from 127.0.0.1 port 59308
+Jun 12 19:28:02 192-168-37-132 sshd[7704]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:28:02 192-168-37-132 sshd[7704]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:28:03 192-168-37-132 sshd[7704]: Failed password for invalid user invaliduser from 127.0.0.1 port 59308 ssh2
+Jun 12 19:28:16 192-168-37-132 sshd[7704]: Connection closed by invalid user invaliduser 127.0.0.1 port 59308 [preauth]
+Jun 12 19:28:18 192-168-37-132 sshd[7711]: Invalid user unknownuser from 127.0.0.1 port 44790
+Jun 12 19:28:20 192-168-37-132 sshd[7711]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:28:20 192-168-37-132 sshd[7711]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:28:22 192-168-37-132 sshd[7711]: Failed password for invalid user unknownuser from 127.0.0.1 port 44790 ssh2
+Jun 12 19:28:23 192-168-37-132 sshd[7711]: pam_unix(sshd:auth): check pass; user unknown
+Jun 12 19:28:25 192-168-37-132 sshd[7711]: Failed password for invalid user unknownuser from 127.0.0.1 port 44790 ssh2
+Jun 12 19:28:32 192-168-37-132 sshd[7711]: Connection closed by invalid user unknownuser 127.0.0.1 port 44790 [preauth]
+Jun 12 19:28:32 192-168-37-132 sshd[7711]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+Jun 12 19:28:36 192-168-37-132 sshd[7717]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=root
+Jun 12 19:28:38 192-168-37-132 sshd[7717]: Failed password for root from 127.0.0.1 port 44698 ssh2
+Jun 12 19:28:58 192-168-37-132 sshd[7717]: Connection closed by authenticating user root 127.0.0.1 port 44698 [preauth]
+Jun 12 19:29:00 192-168-37-132 sudo:     root : TTY=pts/5 ; PWD=/home/ubuntu/Documents/logs-collection ; USER=root ; COMMAND=/usr/bin/ls
+Jun 12 19:29:00 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 19:29:00 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
+Jun 12 19:29:29 192-168-37-132 sudo:     root : TTY=pts/5 ; PWD=/home/ubuntu/Documents/logs-collection ; USER=root ; COMMAND=/usr/sbin/useradd backdoor
+Jun 12 19:29:29 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 19:29:30 192-168-37-132 useradd[7736]: new group: name=backdoor, GID=1001
+Jun 12 19:29:30 192-168-37-132 useradd[7736]: new user: name=backdoor, UID=1001, GID=1001, home=/home/backdoor, shell=/bin/sh, from=/dev/pts/6
+Jun 12 19:29:30 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
+Jun 12 19:29:30 192-168-37-132 sudo:     root : TTY=pts/5 ; PWD=/home/ubuntu/Documents/logs-collection ; USER=root ; COMMAND=/usr/bin/passwd backdoor
+Jun 12 19:29:30 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 19:29:48 192-168-37-132 passwd[7746]: pam_unix(passwd:chauthtok): password changed for backdoor
+Jun 12 19:29:48 192-168-37-132 passwd[7746]: gkr-pam: couldn't update the login keyring password: no old password was entered
+Jun 12 19:29:48 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
+Jun 12 19:30:01 192-168-37-132 CRON[7760]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Jun 12 19:30:01 192-168-37-132 CRON[7760]: pam_unix(cron:session): session closed for user root
+Jun 12 19:30:08 192-168-37-132 sudo:     root : TTY=pts/5 ; PWD=/home/ubuntu/Documents/logs-collection ; USER=root ; COMMAND=/usr/bin/passwd root
+Jun 12 19:30:08 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 19:30:13 192-168-37-132 passwd[7772]: pam_pwquality(passwd:chauthtok): user aborted password change
+Jun 12 19:30:13 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
+Jun 12 19:30:27 192-168-37-132 sudo:     root : TTY=pts/5 ; PWD=/home/ubuntu/Documents/logs-collection ; USER=root ; COMMAND=/usr/bin/tee /etc/cron.d/backdoorjob
+Jun 12 19:30:27 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 19:30:27 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
