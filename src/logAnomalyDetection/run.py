@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Integrated AI-driven SIEM Log Anomaly Detection Pipeline
-Handles parsing and advanced anomaly detection using the new pipeline system
+Handles parsing and advanced hybrid anomaly detection
 """
 
 import argparse
@@ -10,27 +10,154 @@ import os
 import yaml
 from pathlib import Path
 import pandas as pd
+import requests
+import json
+import time
+from datetime import datetime
+from typing import Dict, List, Optional
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
-sys.path.append('.')  # For relative imports
+sys.path.append('.')
 
-# CRITICAL FIX: Import all pickled classes BEFORE importing pipeline
+# Import all pickled classes BEFORE importing pipeline
 from src.logAnomalyDetection.LSTM_AE.severity_classifier import EnhancedSeverityManager, RuleBasedLogClassifier
-from src.logAnomalyDetection.LSTM_AE.model import EnhancedEnsembleDetector, DataPreprocessor, AttentionLSTMAutoencoder
-from src.logAnomalyDetection.LSTM_AE.explainer import AttentionExplainer
+from src.logAnomalyDetection.LSTM_AE.model import HybridEnsembleDetector, DataPreprocessor, HybridAttentionLSTMAutoencoder
 
 # Import parsing functionality
 from parse import parse_and_process
 
-# Import new pipeline components
+# Import new hybrid pipeline
 from src.logAnomalyDetection.pipeline import LogAnomalyDetectionPipeline
 from src.utils.config_loader import load_config
 
+class ExpressExporter:
+    """Built-in Express exporter for anomaly data"""
+    
+    def __init__(self, config):
+        self.base_url = config.get('express_backend', {}).get('base_url', 'http://localhost:5000')
+        self.timeout = config.get('express_backend', {}).get('timeout', 30)
+        self.retry_attempts = config.get('express_backend', {}).get('retry_attempts', 3)
+        
+        # Headers for your server
+        self.headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    
+    def export_anomalies(self, anomalies: List[Dict]) -> bool:
+        """Export anomalies to your existing /api/logs endpoint"""
+        try:
+            print(f"🔍 DEBUG: Starting export of {len(anomalies)} anomalies")
+            
+            # Convert anomalies to format expected by your server
+            logs_array = []
+            
+            for anomaly in anomalies:
+                # Handle both single log and sequential anomalies
+                if 'logs' in anomaly:  # Sequential anomaly
+                    # For sequential, we'll send the first log as representative
+                    log_data = {
+                        'log': anomaly['logs'][0] if anomaly['logs'] else {},
+                        'anomaly_type': anomaly['anomaly_type'],
+                        'severity': anomaly['severity'],
+                        'confidence': anomaly['confidence'],
+                        'anomaly_score': anomaly['anomaly_score'],
+                        'processing_mode': anomaly['processing_mode'],
+                        'timestamp': anomaly['timestamp']
+                    }
+                else:  # Single log anomaly
+                    log_data = {
+                        'log': anomaly['log'],
+                        'anomaly_type': anomaly['anomaly_type'],
+                        'severity': anomaly['severity'],
+                        'confidence': anomaly['confidence'],
+                        'anomaly_score': anomaly['anomaly_score'],
+                        'processing_mode': anomaly['processing_mode'],
+                        'timestamp': anomaly['timestamp']
+                    }
+                
+                logs_array.append(log_data)
+            
+            print(f"🔍 DEBUG: Converted {len(logs_array)} anomalies for export")
+            return self._send_to_logs_endpoint(logs_array)
+            
+        except Exception as e:
+            print(f"❌ Failed to export anomalies: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    def _send_to_logs_endpoint(self, logs_array: List[Dict]) -> bool:
+        """Send logs array to your /api/logs endpoint"""
+        url = f"{self.base_url}/api/logs"
+        
+        print(f"🔍 DEBUG: Sending to URL: {url}")
+        print(f"🔍 DEBUG: Payload size: {len(logs_array)} logs")
+        if logs_array:
+            print(f"🔍 DEBUG: Sample payload: {logs_array[0]}")
+        
+        for attempt in range(self.retry_attempts):
+            try:
+                print(f"🔍 DEBUG: Attempt {attempt + 1}/{self.retry_attempts}")
+                
+                response = requests.post(
+                    url,
+                    json=logs_array,  # Send as array directly
+                    headers=self.headers,
+                    timeout=self.timeout
+                )
+                
+                print(f"🔍 DEBUG: Response status: {response.status_code}")
+                print(f"🔍 DEBUG: Response text: {response.text}")
+                
+                if response.status_code == 200:
+                    print(f"✅ Successfully sent {len(logs_array)} logs to Express server")
+                    return True
+                else:
+                    print(f"⚠️  Express server returned status {response.status_code}: {response.text}")
+                    
+            except requests.exceptions.Timeout:
+                print(f"⚠️  Request timeout (attempt {attempt + 1}/{self.retry_attempts})")
+            except requests.exceptions.ConnectionError:
+                print(f"⚠️  Connection error (attempt {attempt + 1}/{self.retry_attempts})")
+            except Exception as e:
+                print(f"⚠️  Request failed (attempt {attempt + 1}/{self.retry_attempts}): {e}")
+            
+            if attempt < self.retry_attempts - 1:
+                time.sleep(2 ** attempt)  # Exponential backoff
+        
+        return False
+    
+    def test_connection(self) -> bool:
+        """Test connection to your Express backend"""
+        try:
+            print(f"🔍 DEBUG: Testing connection to {self.base_url}")
+            
+            # Test with your system health endpoint
+            response = requests.get(
+                f"{self.base_url}/api/system-health",
+                headers=self.headers,
+                timeout=5
+            )
+            
+            print(f"🔍 DEBUG: Health check response: {response.status_code}")
+            
+            if response.status_code == 200:
+                print("✅ Express backend connection successful")
+                return True
+            else:
+                print(f"❌ Express backend returned status {response.status_code}")
+                return False
+                
+        except Exception as e:
+            print(f"❌ Express backend connection failed: {e}")
+            return False
+
 def parse_arguments():
     """Parse command line arguments"""
-    parser = argparse.ArgumentParser(description='AI-driven SIEM Log Anomaly Detection - Full Pipeline')
+    parser = argparse.ArgumentParser(description='AI-driven SIEM Log Anomaly Detection - Hybrid Pipeline')
     
     parser.add_argument('--config', '-c', 
                        default='configs/log-anomaly-detection.yml',
@@ -60,6 +187,11 @@ def parse_arguments():
                        default='full',
                        help='Pipeline mode: parse only, detect only, or full pipeline')
     
+    parser.add_argument('--processing-mode',
+                       choices=['sequential', 'single', 'both'],
+                       default='both',
+                       help='Anomaly detection processing mode')
+    
     parser.add_argument('--skip-parsing', 
                        action='store_true',
                        help='Skip parsing step (use existing structured data)')
@@ -71,84 +203,89 @@ def parse_arguments():
                        action='store_true',
                        help='Enable verbose output')
     
+    parser.add_argument('--export-to-express',
+                       action='store_true',
+                       help='Export results to Express backend')
+    
+    parser.add_argument('--express-url',
+                       help='Express backend URL (default: http://localhost:5000)')
+    
+    parser.add_argument('--test-express-connection',
+                       action='store_true',
+                       help='Test Express backend connection only')
+    
     return parser.parse_args()
 
-def run_parsing_stage(dataset, input_dir, output_dir, log_file, verbose=False):
-    """Run log parsing stage using Brain parser"""
-    print("🔍 STAGE 1: Log Parsing")
-    print("-" * 25)
-    
+def export_to_express(results, config):
+    """Export results to Express backend"""
     try:
-        if verbose:
-            print(f"   • Dataset: {dataset}")
-            print(f"   • Input directory: {input_dir}")
-            print(f"   • Output directory: {output_dir}")
-            print(f"   • Log file: {log_file}")
+        print("🔍 DEBUG: export_to_express called")
         
-        # Run Brain parsing
-        print("   • Starting Brain parser...")
-        parse_and_process(
-            dataset=dataset,
-            input_dir=input_dir,
-            output_dir=output_dir,
-            log_file=log_file
-        )
+        exporter = ExpressExporter(config)
         
-        # Determine the structured CSV path
-        # Try different naming conventions
-        possible_paths = [
-            os.path.join(output_dir, f"{log_file}_structured.csv"),
-            os.path.join(output_dir, f"{os.path.splitext(log_file)[0]}.log_structured.csv"),
-            os.path.join(output_dir, f"{dataset}.log_structured.csv"),
-            os.path.join(output_dir, f"{dataset}_structured.csv")
-        ]
+        print("📤 Exporting anomalies to Express backend...")
         
-        structured_csv = None
-        for path in possible_paths:
-            if os.path.isfile(path):
-                structured_csv = path
-                break
+        # Collect all anomalies from different modes
+        all_anomalies = []
         
-        if structured_csv:
-            print(f"✅ Parsing complete!")
-            print(f"   • Structured logs: {structured_csv}")
+        # Add single log anomalies
+        if 'single_log_results' in results and results['single_log_results']:
+            all_anomalies.extend(results['single_log_results'])
+            print(f"   • Added {len(results['single_log_results'])} single log anomalies")
+        
+        # Add sequential anomalies
+        if 'sequential_results' in results and results['sequential_results']:
+            all_anomalies.extend(results['sequential_results'])
+            print(f"   • Added {len(results['sequential_results'])} sequential anomalies")
+        
+        # Add hybrid anomalies if present
+        if 'hybrid_results' in results and results['hybrid_results']:
+            all_anomalies.extend(results['hybrid_results'])
+            print(f"   • Added {len(results['hybrid_results'])} hybrid anomalies")
+        
+        # Add anomaly_results for single mode processing
+        if 'anomaly_results' in results and results['anomaly_results']:
+            all_anomalies.extend(results['anomaly_results'])
+            print(f"   • Added {len(results['anomaly_results'])} anomalies from single mode")
+        
+        print(f"🔍 DEBUG: Total anomalies collected: {len(all_anomalies)}")
+        if all_anomalies:
+            print(f"🔍 DEBUG: First anomaly sample: {all_anomalies[0]}")
             
-            # Validate the CSV
-            try:
-                df = pd.read_csv(structured_csv)
-                print(f"   • Parsed {len(df)} log entries")
-                if verbose:
-                    print(f"   • Columns: {list(df.columns)}")
-                
-                return structured_csv
-            except Exception as e:
-                print(f"⚠️  Warning: Could not validate CSV: {e}")
-                return structured_csv
+            if exporter.export_anomalies(all_anomalies):
+                print(f"✅ Successfully exported {len(all_anomalies)} anomalies to Express server")
+                return True
+            else:
+                print("❌ Failed to export anomalies to Express server")
+                return False
         else:
-            print(f"❌ Structured CSV not found at expected locations:")
-            for path in possible_paths:
-                print(f"   • Tried: {path}")
-            return None
+            print("⚠️  DEBUG: No anomalies found to export!")
+            return True
         
     except Exception as e:
-        print(f"❌ Parsing failed: {e}")
-        if verbose:
-            import traceback
-            traceback.print_exc()
-        return None
+        print(f"❌ Express export failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
 
-def run_detection_stage(config, input_data, verbose=False):
-    """Run advanced anomaly detection using new pipeline"""
-    print("\n🤖 STAGE 2: Advanced Anomaly Detection")
-    print("-" * 40)
+def run_detection_stage(config, input_data, processing_mode='both', verbose=False):
+    """Run hybrid anomaly detection using new pipeline"""
+    print(f"\n🤖 STAGE 2: Hybrid Anomaly Detection (Mode: {processing_mode})")
+    print("-" * 50)
     
     try:
         # Initialize pipeline with detection config
         detection_config = config.get('detection', {})
-        pipeline = LogAnomalyDetectionPipeline(detection_config)
+        
+        # Remove Express exporter from pipeline since we handle it here
+        detection_config_copy = detection_config.copy()
+        detection_config_copy.pop('express_backend', None)
+        
+        pipeline = LogAnomalyDetectionPipeline(detection_config_copy)
         
         if verbose:
             print(f"   • Model path: {detection_config.get('model_path', 'default')}")
+            print(f"   • Processing mode: {processing_mode}")
             print(f"   • Sequence length: {detection_config.get('seq_len', 8)}")
             print(f"   • Stride: {detection_config.get('stride', 8)}")
             print(f"   • Output path: {detection_config.get('output_path', 'default')}")
@@ -158,44 +295,45 @@ def run_detection_stage(config, input_data, verbose=False):
             print("❌ Pipeline initialization failed")
             return None
         
-        # Process logs through the pipeline
-        print("   • Running ensemble anomaly detection...")
-        results = pipeline.process_logs(input_data)
+        # Process logs through the hybrid pipeline
+        print("   • Running hybrid ensemble anomaly detection...")
+        results = pipeline.process_logs(input_data, processing_mode=processing_mode)
+        
+        # Export to Express if enabled
+        if config.get('express_backend', {}).get('enabled', False):
+            export_to_express(results, config)
         
         # Save results
         output_dir = pipeline.save_results(results)
         
-        # Display results summary
-        print(f"✅ Detection complete!")
-        print(f"   • Anomalies detected: {results['anomaly_detection']['total_anomalies']}")
-        print(f"   • Anomaly rate: {results['anomaly_detection']['anomaly_rate']:.1f}%")
-        
-        # Show severity breakdown
-        severity_dist = results['severity_analysis']['severity_distribution']
-        critical_count = severity_dist['counts'].get('Critical', 0)
-        high_count = severity_dist['counts'].get('High', 0)
-        
-        if critical_count > 0:
-            print(f"   • 🚨 CRITICAL: {critical_count} critical anomalies!")
-        if high_count > 0:
-            print(f"   • ⚠️  HIGH: {high_count} high-severity anomalies")
-        
-        # Show log classification summary
-        class_stats = results['log_classification']['classification_stats']
-        auth_errors = class_stats['counts'].get('authentication_error', 0)
-        system_critical = class_stats['counts'].get('system_critical', 0)
-        
-        if auth_errors > 0:
-            print(f"   • 🔐 Authentication errors: {auth_errors}")
-        if system_critical > 0:
-            print(f"   • ⚡ System critical events: {system_critical}")
+        # Display results summary based on processing mode
+        if processing_mode == 'both':
+            print(f"✅ Hybrid detection complete!")
+            print(f"   • Sequential anomalies: {results['mode_comparison']['sequential_count']}")
+            print(f"   • Single log anomalies: {results['mode_comparison']['single_log_count']}")
+            
+            # Show severity breakdown for each mode
+            for mode_name, mode_results in [
+                ('Sequential', results.get('sequential_results', [])),
+                ('Single Log', results.get('single_log_results', []))
+            ]:
+                if mode_results:
+                    severities = [r['severity'] for r in mode_results]
+                    from collections import Counter
+                    severity_counts = Counter(severities)
+                    critical_count = severity_counts.get('Critical', 0)
+                    high_count = severity_counts.get('High', 0)
+                    
+                    if critical_count > 0:
+                        print(f"   • 🚨 {mode_name} CRITICAL: {critical_count}")
+                    if high_count > 0:
+                        print(f"   • ⚠️  {mode_name} HIGH: {high_count}")
+        else:
+            print(f"✅ Detection complete ({processing_mode} mode)!")
+            if 'anomaly_results' in results:
+                print(f"   • Anomalies detected: {len(results['anomaly_results'])}")
         
         print(f"   • Results saved to: {output_dir}")
-        
-        # Generate and display report if verbose
-        if verbose:
-            report = pipeline.generate_report()
-            print(f"\n{report}")
         
         return results
         
@@ -206,95 +344,59 @@ def run_detection_stage(config, input_data, verbose=False):
             traceback.print_exc()
         return None
 
-def validate_inputs(args):
-    """Validate input arguments and paths"""
-    errors = []
-    
-    # Check input file/directory for parsing
-    if args.mode in ['parse', 'full'] and not args.skip_parsing:
-        if not args.input:
-            errors.append("Input log file required for parsing mode")
-        else:
-            input_path = os.path.join(args.input_dir, args.input)
-            if not os.path.exists(input_path):
-                errors.append(f"Input log file not found: {input_path}")
-    
-    # Check for detection mode
-    if args.mode in ['detect', 'full'] and args.skip_parsing:
-        if args.use_existing_csv:
-            if not os.path.exists(args.use_existing_csv):
-                errors.append(f"Existing CSV file not found: {args.use_existing_csv}")
-        else:
-            errors.append("For detection-only mode, specify --use-existing-csv")
-    
-    # Check config file
-    if not os.path.exists(args.config):
-        errors.append(f"Configuration file not found: {args.config}")
-    
-    return errors
-
-def display_anomaly_logs(results, verbose=False):
-    """Display the specific logs that caused anomalies"""
-    anomaly_logs = results.get('anomaly_logs', {})
-    
-    if not anomaly_logs:
-        print("   • No anomaly logs to display")
+def display_hybrid_results(results, verbose=False):
+    """Display hybrid processing results"""
+    if 'mode_comparison' not in results:
         return
     
-    print(f"\n📋 ANOMALOUS LOG SEQUENCES:")
+    print(f"\n📋 HYBRID PROCESSING RESULTS:")
     print("-" * 50)
     
-    for seq_idx, seq_data in anomaly_logs.items():
-        severity_info = None
-        for severity_result in results['severity_analysis']['classified_anomalies']:
-            if severity_result['index'] == seq_idx:
-                severity_info = severity_result
-                break
-        
-        severity = severity_info['severity'] if severity_info else 'Unknown'
-        error = severity_info['error'] if severity_info else 0.0
-        
-        print(f"\n🚨 SEQUENCE {seq_idx} - {severity} Severity (Error: {error:.4f})")
-        print(f"   Log Range: {seq_data['log_range']} ({seq_data['total_logs']} logs)")
-        print(f"   Logs in sequence:")
-        
-        for i, log in enumerate(seq_data['logs']):
-            icon = "🔴" if 'error' in log['content'].lower() or 'fail' in log['content'].lower() else "🟡"
-            print(f"     {icon} Log {log['log_index']}: [{log['level']}] {log['component']}")
-            
-            if verbose:
-                print(f"        Time: {log['timestamp']}")
-                print(f"        Content: {log['content'][:100]}...")
-                print(f"        Template: {log['event_template']}")
-                print()
-            else:
-                print(f"        {log['content'][:80]}...")
-        
-        # Show explanation if available
-        explanations = results.get('explanations', {}).get('explanations', {})
-        if str(seq_idx) in explanations:
-            explanation = explanations[str(seq_idx)]
-            print(f"\n   🔍 Why this sequence is anomalous:")
-            for i, feature in enumerate(explanation['top_features'][:3], 1):
-                print(f"     {i}. {feature['feature_name']}: {feature['contribution_percentage']:.1f}%")
-
+    mode_comparison = results['mode_comparison']
+    
+    print(f"🔄 Mode Comparison:")
+    print(f"   • Sequential processing: {mode_comparison['sequential_count']} anomalies")
+    print(f"   • Single log processing: {mode_comparison['single_log_count']} anomalies")
+    
+    # Show thresholds
+    thresholds = mode_comparison.get('thresholds', {})
+    print(f"\n📊 Detection Thresholds:")
+    for mode, threshold in thresholds.items():
+        print(f"   • {mode.title()}: {threshold:.4f}")
+    
+    # Display sample results from each mode
+    for mode_name, mode_key in [
+        ('Sequential', 'sequential_results'),
+        ('Single Log', 'single_log_results')
+    ]:
+        mode_results = results.get(mode_key, [])
+        if mode_results:
+            print(f"\n🔍 {mode_name.upper()} ANOMALIES (showing top 3):")
+            for i, result in enumerate(mode_results[:3]):
+                severity = result.get('severity', 'Unknown')
+                anomaly_type = result.get('anomaly_type', 'unknown')
+                score = result.get('anomaly_score', 0.0)
+                
+                icon = "🔴" if severity == "Critical" else "🟠" if severity == "High" else "🟡"
+                print(f"   {icon} #{i+1}: {anomaly_type} - {severity} (Score: {score:.4f})")
+                
+                if verbose and 'logs' in result:
+                    # Sequential results have multiple logs
+                    print(f"      Sequence length: {result.get('sequence_length', 1)}")
+                    if result['logs']:
+                        print(f"      First log: {result['logs'][0]['content'][:60]}...")
+                elif verbose and 'log' in result:
+                    # Single log results
+                    print(f"      Content: {result['log']['content'][:60]}...")
 
 def main():
     """Main execution function"""
     args = parse_arguments()
     
-    print("🚀 AI-DRIVEN SIEM LOG ANOMALY DETECTION PIPELINE")
-    print("=" * 55)
-    print("   Advanced Parsing + ML-Driven Detection System")
-    print("=" * 55)
-    
-    # Validate inputs
-    validation_errors = validate_inputs(args)
-    if validation_errors:
-        print("❌ Input validation failed:")
-        for error in validation_errors:
-            print(f"   • {error}")
-        sys.exit(1)
+    print("🚀 AI-DRIVEN SIEM HYBRID LOG ANOMALY DETECTION PIPELINE")
+    print("=" * 65)
+    print("   Advanced Parsing + Hybrid ML-Driven Detection System")
+    print("=" * 65)
     
     # Load configuration
     try:
@@ -305,49 +407,39 @@ def main():
         print(f"❌ Failed to load configuration: {e}")
         sys.exit(1)
     
+    # Override Express settings from command line (MOVED UP)
+    if args.export_to_express:
+        config.setdefault('express_backend', {})['enabled'] = True
+        print("🔗 Express backend integration enabled via command line")
+    
+    if args.express_url:
+        config.setdefault('express_backend', {})['base_url'] = args.express_url
+        print(f"🔗 Express backend URL set to: {args.express_url}")
+    
+    # Test Express connection only
+    if args.test_express_connection:
+        if config.get('express_backend', {}).get('enabled', False):
+            exporter = ExpressExporter(config)
+            if exporter.test_connection():
+                print("✅ Express backend connection test passed")
+                sys.exit(0)
+            else:
+                print("❌ Express backend connection test failed")
+                sys.exit(1)
+        else:
+            print("❌ Express backend not enabled in configuration")
+            sys.exit(1)
+    
     # Override config with command line arguments
     config.setdefault('detection', {})['output_path'] = args.reports_dir
     
     # Execute pipeline based on mode
-    if args.mode == 'parse':
-        # Parse only mode
-        result = run_parsing_stage(
-            dataset=args.dataset,
-            input_dir=args.input_dir,
-            output_dir=args.output_dir,
-            log_file=args.input,
-            verbose=args.verbose
-        )
-        
-        if result:
-            print(f"\n🎉 Parsing completed successfully!")
-            print(f"📁 Structured data: {result}")
-        else:
-            print("❌ Parsing failed")
-            sys.exit(1)
-            
-    elif args.mode == 'detect':
-        # Detection only mode
-        current_input = args.use_existing_csv
-        
-        if not os.path.exists(current_input):
-            print(f"❌ Input file not found: {current_input}")
-            sys.exit(1)
-        
-        result = run_detection_stage(config, current_input, args.verbose)
-        if result:
-            print(f"\n🎉 Detection completed successfully!")
-        else:
-            print("❌ Detection failed")
-            sys.exit(1)
-            
-    elif args.mode == 'full':
-        # Full integrated pipeline
+    if args.mode == 'full':
         current_input = None
         
         # Stage 1: Parsing (unless skipped)
         if not args.skip_parsing:
-            parsed_file = run_parsing_stage(
+            parsed_file = parse_and_process(
                 dataset=args.dataset,
                 input_dir=args.input_dir,
                 output_dir=args.output_dir,
@@ -369,62 +461,57 @@ def main():
             print(f"❌ Structured data not found: {current_input}")
             sys.exit(1)
         
-        # Stage 2: Advanced Detection
-        result = run_detection_stage(config, current_input, args.verbose)
+        # Stage 2: Hybrid Detection
+        result = run_detection_stage(config, current_input, args.processing_mode, args.verbose)
         if not result:
             print("❌ Pipeline failed at detection stage")
             sys.exit(1)
         
-        display_anomaly_logs(result, args.verbose)
+        # Display hybrid results
+        if args.processing_mode == 'both':
+            display_hybrid_results(result, args.verbose)
         
         # Final comprehensive summary
-        print(f"\n🎉 FULL PIPELINE COMPLETED SUCCESSFULLY!")
-        print("=" * 50)
+        print(f"\n🎉 HYBRID PIPELINE COMPLETED SUCCESSFULLY!")
+        print("=" * 55)
         
-        print(f"📊 COMPREHENSIVE ANALYSIS:")
-        print(f"   • Total logs processed: {result['metadata']['total_logs_processed']}")
-        print(f"   • Anomalies detected: {result['anomaly_detection']['total_anomalies']}")
-        print(f"   • Anomaly rate: {result['anomaly_detection']['anomaly_rate']:.1f}%")
-        
-        # Detailed severity analysis
-        severity_dist = result['severity_analysis']['severity_distribution']
-        print(f"\n🚨 SEVERITY BREAKDOWN:")
-        for severity, count in severity_dist['counts'].items():
-            percentage = severity_dist['percentages'][severity]
-            if count > 0:
-                icon = "🔴" if severity == "Critical" else "🟠" if severity == "High" else "🟡" if severity == "Medium" else "🟢"
-                print(f"   {icon} {severity}: {count} anomalies ({percentage:.1f}%)")
-        
-        # Log type analysis
-        class_stats = result['log_classification']['classification_stats']
-        print(f"\n🏷️  LOG TYPE ANALYSIS:")
-        critical_types = ['authentication_error', 'system_critical', 'permission_error']
-        for log_type in critical_types:
-            count = class_stats['counts'].get(log_type, 0)
-            if count > 0:
-                percentage = class_stats['percentages'][log_type]
-                print(f"   • {log_type.replace('_', ' ').title()}: {count} logs ({percentage:.1f}%)")
-        
-        # Threat assessment
-        critical_count = severity_dist['counts'].get('Critical', 0)
-        high_count = severity_dist['counts'].get('High', 0)
-        anomaly_rate = result['anomaly_detection']['anomaly_rate']
-        
-        print(f"\n🎯 THREAT ASSESSMENT:")
-        if critical_count > 0:
-            print(f"   🚨 CRITICAL: {critical_count} critical anomalies - immediate investigation required!")
-        elif high_count > 5:
-            print(f"   ⚠️  HIGH: {high_count} high-severity anomalies - monitor closely")
-        elif anomaly_rate > 10:
-            print(f"   🟡 ELEVATED: High anomaly rate ({anomaly_rate:.1f}%) - increased monitoring")
-        else:
-            print(f"   ✅ NORMAL: System operating within acceptable parameters")
+        if args.processing_mode == 'both':
+            mode_comparison = result.get('mode_comparison', {})
+            print(f"📊 HYBRID ANALYSIS SUMMARY:")
+            print(f"   • Total logs processed: {result['metadata']['total_logs_processed']}")
+            print(f"   • Sequential anomalies: {mode_comparison.get('sequential_count', 0)}")
+            print(f"   • Single log anomalies: {mode_comparison.get('single_log_count', 0)}")
+            
+            # Threat assessment
+            total_critical = 0
+            total_high = 0
+            
+            for mode_results in [
+                result.get('sequential_results', []),
+                result.get('single_log_results', [])
+            ]:
+                for res in mode_results:
+                    if res.get('severity') == 'Critical':
+                        total_critical += 1
+                    elif res.get('severity') == 'High':
+                        total_high += 1
+            
+            print(f"\n🎯 COMPREHENSIVE THREAT ASSESSMENT:")
+            if total_critical > 0:
+                print(f"   🚨 CRITICAL: {total_critical} critical anomalies across all modes!")
+            elif total_high > 5:
+                print(f"   ⚠️  HIGH: {total_high} high-severity anomalies detected")
+            else:
+                print(f"   ✅ NORMAL: System operating within acceptable parameters")
         
         print(f"\n📁 OUTPUT LOCATIONS:")
         print(f"   • Structured data: {current_input}")
         print(f"   • Analysis reports: {args.reports_dir}")
-        print(f"   • Anomaly results: {args.reports_dir}/anomaly_detection_results.json")
-        print(f"   • Pipeline summary: {args.reports_dir}/pipeline_summary.json")
+        print(f"   • Hybrid results: {args.reports_dir}/hybrid_anomaly_detection_results.json")
+        
+        if args.processing_mode == 'both':
+            print(f"   • Sequential anomalies: {args.reports_dir}/sequential_anomalies.json")
+            print(f"   • Single log anomalies: {args.reports_dir}/single_log_anomalies.json")
         
         print(f"\n✅ Ready for SOC integration and real-time monitoring!")
 
