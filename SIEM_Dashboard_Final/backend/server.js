@@ -23,7 +23,7 @@ const io = new Server(server, {
 app.use(cors());
 app.use(bodyParser.json());
 
-const mongoURI = "mongodb+srv://atlas_admin:EJYF936.2w5aE36@cluster0.g3nsj.mongodb.net/test?retryWrites=true&w=majority"; // Replace yourDatabaseName with the actual name
+const mongoURI = ""; // Replace yourDatabaseName with the actual name
 
 const connectDB = async () => {
     try {
