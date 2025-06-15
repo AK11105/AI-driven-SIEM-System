@@ -1,0 +1,107 @@
+Jun 12 18:27:50 192-168-37-132 dbus-daemon[756]: [system] Activating via systemd: service name='net.reactivated.Fprint' unit='fprintd.service' requested by ':1.83' (uid=1000 pid=2375 comm="/usr/bin/gnome-shell " label="unconfined")
+Jun 12 18:27:51 192-168-37-132 systemd[1]: Starting Fingerprint Authentication Daemon...
+Jun 12 18:27:52 192-168-37-132 dbus-daemon[756]: [system] Successfully activated service 'net.reactivated.Fprint'
+Jun 12 18:27:52 192-168-37-132 gnome-shell[2375]: JS ERROR: Failed to initialize fprintd service: Gio.IOErrorEnum: GDBus.Error:net.reactivated.Fprint.Error.NoSuchDevice: No devices available#012asyncCallback@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:114:23
+Jun 12 18:27:52 192-168-37-132 systemd[1]: Started Fingerprint Authentication Daemon.
+Jun 12 18:27:56 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Activating service name='org.freedesktop.FileManager1' requested by ':1.26' (uid=1000 pid=2375 comm="/usr/bin/gnome-shell " label="unconfined")
+Jun 12 18:27:57 192-168-37-132 NetworkManager[759]: <info>  [1749733077.7435] agent-manager: agent[8a0acb1c56191449,:1.83/org.gnome.Shell.NetworkAgent/1000]: agent registered
+2025-06-12T12:57:59.273Z 192-168-37-132 /var/log/syslog: Jun 12 18:27:58 192-168-37-132 ubuntu-appindicators@ubuntu.com[2375]: unable to update icon for software-update-available
+2025-06-12T12:57:59.273Z 192-168-37-132 /var/log/syslog: Jun 12 18:27:58 192-168-37-132 ubuntu-appindicators@ubuntu.com[2375]: unable to update icon for livepatch
+2025-06-12T12:57:59.798Z 192-168-37-132 /var/log/auth.log: Jun 12 18:27:55 192-168-37-132 gdm-password]: gkr-pam: unlocked login keyring
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Jun 12 18:27:59 192-168-37-132 gnome-shell[2375]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Jun 12 18:28:06 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Successfully activated service 'org.freedesktop.FileManager1'
+Jun 12 18:28:06 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Activating service name='org.gnome.ArchiveManager1' requested by ':1.132' (uid=1000 pid=5868 comm="gjs /usr/share/gnome-shell/extensions/ding@rasters" label="unconfined")
+Jun 12 18:28:07 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Successfully activated service 'org.gnome.ArchiveManager1'
+Jun 12 18:28:07 192-168-37-132 gnome-shell[2375]: DING: Detected async api for thumbnails
+Jun 12 18:28:07 192-168-37-132 gnome-shell[2375]: DING: GNOME nautilus 42.6
+Jun 12 18:28:16 192-168-37-132 nautilus[5867]: Could not delete '.meta.isrunning': No such file or directory
+Jun 12 18:28:23 192-168-37-132 systemd[1]: fprintd.service: Deactivated successfully.
+Jun 12 18:28:23 192-168-37-132 systemd[1]: fprintd.service: Consumed 1.272s CPU time.
+Jun 12 18:28:40 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Activating via systemd: service name='org.freedesktop.Tracker3.Miner.Extract' unit='tracker-extract-3.service' requested by ':1.79' (uid=1000 pid=2830 comm="/usr/libexec/tracker-miner-fs-3 " label="unconfined")
+Jun 12 18:28:40 192-168-37-132 systemd[2211]: Starting Tracker metadata extractor...
+Jun 12 18:28:41 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Successfully activated service 'org.freedesktop.Tracker3.Miner.Extract'
+Jun 12 18:28:41 192-168-37-132 systemd[2211]: Started Tracker metadata extractor.
+Jun 12 18:29:25 192-168-37-132 NetworkManager[759]: <info>  [1749733165.4890] dhcp4 (ens33): state changed new lease, address=192.168.37.132
+Jun 12 18:29:52 192-168-37-132 su: pam_unix(su:session): session closed for user root
+Jun 12 18:29:52 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
+Jun 12 18:29:57 192-168-37-132 sudo:   ubuntu : TTY=pts/2 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/su
+Jun 12 18:29:57 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Jun 12 18:29:57 192-168-37-132 su: (to root) root on pts/3
+Jun 12 18:29:57 192-168-37-132 su: pam_unix(su:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 18:29:58 192-168-37-132 su: pam_unix(su:session): session closed for user root
+Jun 12 18:29:58 192-168-37-132 sudo: pam_unix(sudo:session): session closed for user root
+Jun 12 18:30:00 192-168-37-132 sudo:   ubuntu : TTY=pts/2 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/su
+Jun 12 18:30:00 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Jun 12 18:30:00 192-168-37-132 su: (to root) root on pts/3
+Jun 12 18:30:00 192-168-37-132 su: pam_unix(su:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 18:30:02 192-168-37-132 CRON[6007]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Jun 12 18:30:02 192-168-37-132 CRON[6007]: pam_unix(cron:session): session closed for user root
+Jun 12 18:30:02 192-168-37-132 CRON[6008]: (root) CMD ([ -x /etc/init.d/anacron ] && if [ ! -d /run/systemd/system ]; then /usr/sbin/invoke-rc.d anacron start >/dev/null; fi)
+Jun 12 18:30:20 192-168-37-132 sshd[6012]: Accepted password for ubuntu from 192.168.37.132 port 46938 ssh2
+Jun 12 18:30:20 192-168-37-132 sshd[6012]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by (uid=0)
+Jun 12 18:30:21 192-168-37-132 systemd-logind[782]: New session 7 of user ubuntu.
+Jun 12 18:30:23 192-168-37-132 sshd[6070]: Received disconnect from 192.168.37.132 port 46938:11: disconnected by user
+Jun 12 18:30:23 192-168-37-132 sshd[6070]: Disconnected from user ubuntu 192.168.37.132 port 46938
+Jun 12 18:30:23 192-168-37-132 systemd-logind[782]: Session 7 logged out. Waiting for processes to exit.
+Jun 12 18:30:24 192-168-37-132 sshd[6012]: pam_unix(sshd:session): session closed for user ubuntu
+Jun 12 18:30:21 192-168-37-132 systemd[1]: Started Session 7 of User ubuntu.
+Jun 12 18:30:30 192-168-37-132 systemd[1]: session-7.scope: Deactivated successfully.
+Jun 12 18:30:30 192-168-37-132 systemd[1]: session-7.scope: Consumed 7.234s CPU time.
+Jun 12 18:30:30 192-168-37-132 systemd[2211]: Starting Notification regarding a new release of Ubuntu...
+Jun 12 18:30:30 192-168-37-132 systemd-logind[782]: Removed session 7.
+Jun 12 18:30:35 192-168-37-132 check-new-release-gtk[6089]: WARNING:root:found new dist 'noble' but it is on the ignore list
+Jun 12 18:30:35 192-168-37-132 systemd[2211]: Finished Notification regarding a new release of Ubuntu.
+Jun 12 18:30:35 192-168-37-132 systemd[2211]: update-notifier-release.service: Consumed 2.849s CPU time.
+Jun 12 18:30:35 192-168-37-132 sshd[6099]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.37.132  user=ubuntu
+Jun 12 18:30:38 192-168-37-132 sshd[6099]: Failed password for ubuntu from 192.168.37.132 port 45794 ssh2
+Jun 12 18:30:43 192-168-37-132 sshd[6099]: Failed password for ubuntu from 192.168.37.132 port 45794 ssh2
+Jun 12 18:30:50 192-168-37-132 sshd[6099]: Failed password for ubuntu from 192.168.37.132 port 45794 ssh2
+Jun 12 18:30:50 192-168-37-132 sshd[6099]: Connection closed by authenticating user ubuntu 192.168.37.132 port 45794 [preauth]
+Jun 12 18:30:50 192-168-37-132 sshd[6099]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.37.132  user=ubuntu
+Jun 12 18:30:54 192-168-37-132 sshd[6114]: Accepted password for ubuntu from 192.168.37.132 port 34670 ssh2
+Jun 12 18:30:54 192-168-37-132 sshd[6114]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by (uid=0)
+Jun 12 18:30:54 192-168-37-132 systemd-logind[782]: New session 8 of user ubuntu.
+Jun 12 18:30:54 192-168-37-132 systemd[1]: Started Session 8 of User ubuntu.
+Jun 12 18:31:04 192-168-37-132 sudo: pam_unix(sudo:auth): authentication failure; logname=ubuntu uid=1000 euid=0 tty=/dev/pts/4 ruser=ubuntu rhost=  user=ubuntu
+Jun 12 18:31:12 192-168-37-132 sudo:   ubuntu : 3 incorrect password attempts ; TTY=pts/4 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/su
+Jun 12 18:31:19 192-168-37-132 sudo:   ubuntu : TTY=pts/4 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/su
+Jun 12 18:31:19 192-168-37-132 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+Jun 12 18:31:19 192-168-37-132 su: (to root) root on pts/5
+Jun 12 18:31:19 192-168-37-132 su: pam_unix(su:session): session opened for user root(uid=0) by ubuntu(uid=0)
+Jun 12 18:32:04 192-168-37-132 root: sshd[2345]: Failed password for invalid user root from 192.168.1.100 port 45678 ssh2
+Jun 12 18:32:05 192-168-37-132 root: sudo: user1 : TTY=pts/1 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/ls
+Jun 12 18:32:07 192-168-37-132 root: pam_unix(sudo:auth): authentication failure; logname=user1 uid=1000 euid=0 tty=/dev/pts/1 ruser=user1 rhost=  user=user1
+Jun 12 18:32:06 192-168-37-132 systemd[1]: Started Run anacron jobs.
+Jun 12 18:32:06 192-168-37-132 anacron[6201]: Anacron 2.3 started on 2025-06-12
+Jun 12 18:32:06 192-168-37-132 anacron[6201]: Normal exit (0 jobs run)
+Jun 12 18:32:06 192-168-37-132 systemd[1]: anacron.service: Deactivated successfully.
+Jun 12 18:32:06 192-168-37-132 kernel: [ 3775.554892] workqueue: css_killed_work_fn hogged CPU for >10000us 8 times, consider switching to WQ_UNBOUND
+Jun 12 18:32:08 192-168-37-132 root: CRON[9876]: (root) FAILED to execute (/usr/bin/some_script.sh)
+Jun 12 18:32:09 192-168-37-132 root: kernel: [12345.678901] Kernel panic - not syncing: Fatal exception
+Jun 12 18:32:10 192-168-37-132 root: systemd-tmpfiles[1234]: Failed to create file /tmp/somefile: No space left on device
+Jun 12 18:32:11 192-168-37-132 root: python3[5678]: segfault at 0 ip 00007f3d920bd7c4 sp 00007fff31d0 err 4 in libc-2.31.so[7f3d92000000+1a9000]
+Jun 12 18:32:12 192-168-37-132 root: kernel: [23456.123456] [UFW BLOCK] IN=eth0 OUT= MAC=... SRC=192.168.1.5 DST=192.168.1.100 LEN=60 ...
+Jun 12 18:32:15 192-168-37-132 gnome-shell[2375]: libinput error: event2  - VirtualPS/2 VMware VMMouse: client bug: event processing lagging behind by 25ms, your system is too slow
+
+
+----------
+Jun 12 18:12:50 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Activating via systemd: service name='org.freedesktop.Tracker3.Miner.Extract' unit='tracker-extract-3.service' requested by ':1.79' (uid=1000 pid=2830 comm="/usr/libexec/tracker-miner-fs-3 " label="unconfined")
+Jun 12 18:12:50 192-168-37-132 systemd[2211]: Starting Tracker metadata extractor...
+Jun 12 18:12:50 192-168-37-132 dbus-daemon[2228]: [session uid=1000 pid=2228] Successfully activated service 'org.freedesktop.Tracker3.Miner.Extract'
+Jun 12 18:12:50 192-168-37-132 systemd[2211]: Started Tracker metadata extractor.
+Jun 12 18:12:53 192-168-37-132 root: sshd[2345]: Failed password for invalid user root from 192.168.1.100 port 45678 ssh2
+Jun 12 18:12:54 192-168-37-132 root: sudo: user1 : TTY=pts/1 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/ls
+Jun 12 18:12:55 192-168-37-132 root: pam_unix(sudo:auth): authentication failure; logname=user1 uid=1000 euid=0 tty=/dev/pts/1 ruser=user1 rhost=  user=user1
+Jun 12 18:12:56 192-168-37-132 root: CRON[9876]: (root) FAILED to execute (/usr/bin/some_script.sh)
+Jun 12 18:12:57 192-168-37-132 root: kernel: [12345.678901] Kernel panic - not syncing: Fatal exception
+Jun 12 18:12:58 192-168-37-132 root: systemd-tmpfiles[1234]: Failed to create file /tmp/somefile: No space left on device
+Jun 12 18:12:59 192-168-37-132 root: python3[5678]: segfault at 0 ip 00007f3d920bd7c4 sp 00007fff31d0 err 4 in libc-2.31.so[7f3d92000000+1a9000]
+Jun 12 18:13:00 192-168-37-132 root: kernel: [23456.123456] [UFW BLOCK] IN=eth0 OUT= MAC=... SRC=192.168.1.5 DST=192.168.1.100 LEN=60 ...
