@@ -1,0 +1,36 @@
+filebeat.inputs:
+  - type: filestream
+    paths:
+      - /var/log/auth.log
+      - /var/log/syslog
+      - /var/log/nginx/access.log
+      - /var/log/nginx/error.log
+    exclude_lines: ['filebeat\\[[0-9]+\\]:']
+    tags: ["serverlogs"]
+
+
+output.kafka:
+  enabled: true
+  hosts: ["192.168.37.132:9092"]
+  topic: "server-logs"
+  partition.round_robin:
+    reachable_only: false
+  required_acks: 1
+    
+  codec.json:
+    pretty: false
+
+
+filebeat.config.modules:  
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+  
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
