@@ -52,6 +52,6 @@ Thumbs.db
 # User-specific settings for IDEs/editors.
 .vscode/
 .idea/
-
+image.png
 # Miscellaneous files from your structure
 /dashboard/frontend/folder_structure.doc
