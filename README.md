@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**A comprehensive cybersecurity solution integrating Network-Based Intrusion Detection, log-based anomaly detection, and real-time Kafka event streaming, all visualized through an interactive dashboard.**
+**A comprehensive cybersecurity solution integrating Log-based anomaly detection, real-time Kafka event streaming, all visualized through an interactive dashboard.**
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-red.svg)](https://pytorch.org)
