@@ -1,0 +1,79 @@
+[
+  {
+    "logs": [
+      {
+        "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2",
+        "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "17",
+        "timestamp": "19:27:45"
+      },
+      {
+        "content": "pam_unix(sshd:auth): check pass; user unknown",
+        "event_template": "pam_unix(sshd: auth): check pass; user unknown",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "18",
+        "timestamp": "19:27:48"
+      },
+      {
+        "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2",
+        "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "19",
+        "timestamp": "19:27:50"
+      },
+      {
+        "content": "Connection closed by invalid user invaliduser 127.0.0.1 port 43152 [preauth]",
+        "event_template": "Connection closed by invalid user invaliduser <*> port <*> [preauth]",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "20",
+        "timestamp": "19:27:50"
+      },
+      {
+        "content": "PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1",
+        "event_template": "PAM <*> more authentication failures; logname= uid= <*> euid= <*> tty= ssh ruser= rhost= <*>",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "21",
+        "timestamp": "19:27:50"
+      },
+      {
+        "content": "Invalid user invaliduser from 127.0.0.1 port 44412",
+        "event_template": "Invalid user invaliduser from <*> port <*>",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "22",
+        "timestamp": "19:27:50"
+      },
+      {
+        "content": "pam_unix(sshd:auth): check pass; user unknown",
+        "event_template": "pam_unix(sshd: auth): check pass; user unknown",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "23",
+        "timestamp": "19:27:52"
+      },
+      {
+        "content": "pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1",
+        "event_template": "pam_unix(sshd: auth): authentication failure; logname= uid= <*> euid= <*> tty= ssh ruser= rhost= <*>",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "24",
+        "timestamp": "19:27:52"
+      }
+    ],
+    "anomaly_type": "authentication_error",
+    "severity": "Critical",
+    "confidence": 1.0,
+    "timestamp": "19:27:45",
+    "sequence_length": 8,
+    "anomaly_score": 13.226005495639733,
+    "processing_mode": "sequential",
+    "non_normal_count": 3,
+    "total_logs_in_sequence": 8
+  }
+]

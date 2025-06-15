@@ -25,7 +25,7 @@ env/
 
 # Build artifacts and Framework-specific folders
 # These files are generated during the build process of your applications.
-/SIEM_Dashboard_Final/frontend/.next/
+/dashboard/frontend/.next/
 build/
 dist/
 
@@ -54,4 +54,4 @@ Thumbs.db
 .idea/
 
 # Miscellaneous files from your structure
-/SIEM_Dashboard_Final/frontend/folder_structure.doc
+/dashboard/frontend/folder_structure.doc

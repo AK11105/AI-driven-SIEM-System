@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-13T15:23:33.395930",
+    "total_logs_processed": 69,
+    "processing_mode": "both",
+    "pipeline_version": "2.0_hybrid",
+    "config": {
+      "model_path": "src/logAnomalyDetection/LSTM_AE/",
+      "output_path": "reports/logAnomalyDetection/",
+      "seq_len": 8,
+      "stride": 8,
+      "batch_size": 32,
+      "default_processing_mode": "both",
+      "available_modes": [
+        "sequential",
+        "single",
+        "hybrid",
+        "both"
+      ],
+      "ensemble": {
+        "num_models": 3,
+        "enable_single_log": true,
+        "model_configs": [
+          {
+            "hidden_dim": 16,
+            "dropout": 0.3
+          },
+          {
+            "hidden_dim": 24,
+            "dropout": 0.4
+          },
+          {
+            "hidden_dim": 32,
+            "dropout": 0.2
+          }
+        ]
+      },
+      "thresholds": {
+        "anomaly_percentile": 95,
+        "static_threshold_percentile": 95,
+        "adaptive_threshold": true
+      },
+      "severity": {
+        "percentiles": [
+          85,
+          95,
+          99
+        ],
+        "labels": [
+          "Low",
+          "Medium",
+          "High",
+          "Critical"
+        ],
+        "confidence_calculation": true
+      },
+      "preprocessing": {
+        "max_tfidf_features": 50,
+        "max_categorical_features": 50,
+        "content_feature_extraction": true,
+        "remove_temporal_features": true,
+        "handle_high_cardinality": true,
+        "cardinality_threshold": 1000
+      },
+      "classification": {
+        "enable_rule_based": true,
+        "confidence_threshold": 0.7,
+        "filter_normal_types": true,
+        "classification_rules": {
+          "memory_error": [
+            "\\b(out of memory|oom|page allocation failure|dma timeout)\\b",
+            "\\b(malloc failed|memory leak|segfault|kernel panic)\\b",
+            "\\b(swap.*full|virtual memory|memory pressure)\\b"
+          ],
+          "authentication_error": [
+            "\\b(authentication failure|invalid username|login failed)\\b",
+            "\\b(kerberos.*failed|pam_unix.*failed|ssh.*failed)\\b",
+            "\\b(password.*incorrect|access denied|unauthorized)\\b"
+          ],
+          "filesystem_error": [
+            "\\b(no such file|permission denied|disk full|quota exceeded)\\b",
+            "\\b(failed command|status timeout|drive not ready|io error)\\b",
+            "\\b(filesystem.*corrupt|bad sector|read.*error)\\b"
+          ],
+          "network_error": [
+            "\\b(connection timed out|connection refused|peer died)\\b",
+            "\\b(network unreachable|socket error|host.*down)\\b",
+            "\\b(dns.*failed|routing.*error|packet.*lost)\\b"
+          ],
+          "permission_error": [
+            "\\b(permission denied|operation not supported|access forbidden)\\b",
+            "\\b(selinux.*denied|capability.*denied|privilege.*error)\\b",
+            "\\b(sudo.*failed|su.*failed|root.*access)\\b"
+          ],
+          "system_critical": [
+            "\\b(critical|fatal|panic|emergency|alert)\\b",
+            "\\b(system.*halt|kernel.*oops|hardware.*error)\\b",
+            "\\b(temperature.*critical|power.*failure)\\b"
+          ]
+        }
+      }
+    }
+  },
+  "single_log_results": [
+    {
+      "log": {
+        "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 44412 ssh2",
+        "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "25"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "19:27:54",
+      "anomaly_score": 13.38849533021492,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 44412 ssh2",
+        "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "27"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "19:27:57",
+      "anomaly_score": 13.38849533021492,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 44412 ssh2",
+        "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+        "level": "192-168-37-132",
+        "component": "sshd",
+        "line_id": "29"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "19:28:01",
+      "anomaly_score": 13.38849533021492,
+      "processing_mode": "single_log"
+    }
+  ],
+  "sequential_results": [
+    {
+      "logs": [
+        {
+          "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2",
+          "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "17",
+          "timestamp": "19:27:45"
+        },
+        {
+          "content": "pam_unix(sshd:auth): check pass; user unknown",
+          "event_template": "pam_unix(sshd: auth): check pass; user unknown",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "18",
+          "timestamp": "19:27:48"
+        },
+        {
+          "content": "Failed password for invalid user invaliduser from 127.0.0.1 port 43152 ssh2",
+          "event_template": "Failed password for invalid user invaliduser from <*> port <*> ssh2",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "19",
+          "timestamp": "19:27:50"
+        },
+        {
+          "content": "Connection closed by invalid user invaliduser 127.0.0.1 port 43152 [preauth]",
+          "event_template": "Connection closed by invalid user invaliduser <*> port <*> [preauth]",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "20",
+          "timestamp": "19:27:50"
+        },
+        {
+          "content": "PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1",
+          "event_template": "PAM <*> more authentication failures; logname= uid= <*> euid= <*> tty= ssh ruser= rhost= <*>",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "21",
+          "timestamp": "19:27:50"
+        },
+        {
+          "content": "Invalid user invaliduser from 127.0.0.1 port 44412",
+          "event_template": "Invalid user invaliduser from <*> port <*>",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "22",
+          "timestamp": "19:27:50"
+        },
+        {
+          "content": "pam_unix(sshd:auth): check pass; user unknown",
+          "event_template": "pam_unix(sshd: auth): check pass; user unknown",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "23",
+          "timestamp": "19:27:52"
+        },
+        {
+          "content": "pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1",
+          "event_template": "pam_unix(sshd: auth): authentication failure; logname= uid= <*> euid= <*> tty= ssh ruser= rhost= <*>",
+          "level": "192-168-37-132",
+          "component": "sshd",
+          "line_id": "24",
+          "timestamp": "19:27:52"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "19:27:45",
+      "sequence_length": 8,
+      "anomaly_score": 13.226005495639733,
+      "processing_mode": "sequential",
+      "non_normal_count": 3,
+      "total_logs_in_sequence": 8
+    }
+  ],
+  "mode_comparison": {
+    "sequential_count": 1,
+    "single_log_count": 3,
+    "thresholds": {
+      "sequential": 13.222484395219924,
+      "single_log": 13.38708244235184
+    }
+  }
+}

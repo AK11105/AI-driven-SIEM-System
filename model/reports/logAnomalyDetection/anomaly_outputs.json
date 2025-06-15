@@ -1,0 +1,1856 @@
+{
+  "single_log_anomalies": [
+    {
+      "log": {
+        "content": "ALERT exited abnormally with [1]",
+        "event_template": "ALERT exited abnormally with <*>",
+        "level": "combo",
+        "component": "logrotate",
+        "line_id": "1164"
+      },
+      "anomaly_type": "system_critical",
+      "severity": "Critical",
+      "confidence": 0.721925014831089,
+      "timestamp": "04:02:55",
+      "anomaly_score": 8.556280946084405,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "Kerberos authentication failed",
+        "event_template": "Kerberos authentication failed",
+        "level": "combo",
+        "component": "klogind",
+        "line_id": "1569"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "20:53:06",
+      "anomaly_score": 14.202917470609336,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "Kerberos authentication failed",
+        "event_template": "Kerberos authentication failed",
+        "level": "combo",
+        "component": "klogind",
+        "line_id": "1571"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "20:53:06",
+      "anomaly_score": 14.202917470609336,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "Kerberos authentication failed",
+        "event_template": "Kerberos authentication failed",
+        "level": "combo",
+        "component": "klogind",
+        "line_id": "1573"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "20:53:06",
+      "anomaly_score": 14.202917470609336,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1660"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 1.0,
+      "timestamp": "10:56:41",
+      "anomaly_score": 6.782987385078405,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1661"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 1.0,
+      "timestamp": "10:56:41",
+      "anomaly_score": 6.782987385078405,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1662"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 1.0,
+      "timestamp": "10:56:41",
+      "anomaly_score": 6.782987385078405,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1663"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 1.0,
+      "timestamp": "10:56:42",
+      "anomaly_score": 6.782987385078405,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1664"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 1.0,
+      "timestamp": "10:56:42",
+      "anomaly_score": 6.782987385078405,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1665"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.9671107454953153,
+      "timestamp": "10:56:42",
+      "anomaly_score": 5.986587271921433,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1666"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.9671107454953153,
+      "timestamp": "10:56:43",
+      "anomaly_score": 5.986587271921433,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1667"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.9671107454953153,
+      "timestamp": "10:56:43",
+      "anomaly_score": 5.986587271921433,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1668"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.9671107454953153,
+      "timestamp": "10:56:44",
+      "anomaly_score": 5.986587271921433,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "1669"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.9671107454953153,
+      "timestamp": "10:56:44",
+      "anomaly_score": 5.986587271921433,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "ALERT exited abnormally with [1]",
+        "event_template": "ALERT exited abnormally with <*>",
+        "level": "combo",
+        "component": "logrotate",
+        "line_id": "1688"
+      },
+      "anomaly_type": "system_critical",
+      "severity": "Critical",
+      "confidence": 0.502087182167333,
+      "timestamp": "04:04:03",
+      "anomaly_score": 7.016911315363322,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "ALERT exited abnormally with [1]",
+        "event_template": "ALERT exited abnormally with <*>",
+        "level": "combo",
+        "component": "logrotate",
+        "line_id": "1767"
+      },
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.637427459745979,
+      "timestamp": "04:03:08",
+      "anomaly_score": 4.641305214454207,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "ALERT exited abnormally with [1]",
+        "event_template": "ALERT exited abnormally with <*>",
+        "level": "combo",
+        "component": "logrotate",
+        "line_id": "2088"
+      },
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.7770840743078222,
+      "timestamp": "04:04:46",
+      "anomaly_score": 5.211178016315052,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2137"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:43",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2138"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:44",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2139"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:45",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2140"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:45",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2141"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:46",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2142"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:47",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2143"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:48",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2144"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5680574653109988,
+      "timestamp": "16:01:48",
+      "anomaly_score": 4.358238972173018,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2153"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:01",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2154"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:01",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2155"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:01",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2156"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:02",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2157"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:08",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2158"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:09",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2159"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:10",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2160"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5684027477879585,
+      "timestamp": "16:02:10",
+      "anomaly_score": 4.359647907175458,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2193"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:02:52",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2194"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:02:52",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2195"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:02:52",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2196"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:02:53",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2197"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:02:57",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2198"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:02:58",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2199"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:03:00",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2200"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6805561696684044,
+      "timestamp": "16:03:00",
+      "anomaly_score": 4.817293146291496,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2201"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:01",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2202"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:03",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2203"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:05",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2204"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:05",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2205"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:05",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2206"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:05",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2207"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:10",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2208"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:11",
+      "anomaly_score": 10.62467798936283,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2265"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.8323131815209387,
+      "timestamp": "06:09:44",
+      "anomaly_score": 5.43654196467193,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2266"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.8323131815209387,
+      "timestamp": "06:09:44",
+      "anomaly_score": 5.43654196467193,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2267"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.8323131815209387,
+      "timestamp": "06:09:45",
+      "anomaly_score": 5.43654196467193,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2268"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.8323131815209387,
+      "timestamp": "06:09:45",
+      "anomaly_score": 5.43654196467193,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+        "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+        "level": "combo",
+        "component": "sshd(pam_unix)",
+        "line_id": "2269"
+      },
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.8323131815209387,
+      "timestamp": "06:09:45",
+      "anomaly_score": 5.43654196467193,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "ALERT exited abnormally with [1]",
+        "event_template": "ALERT exited abnormally with <*>",
+        "level": "combo",
+        "component": "logrotate",
+        "line_id": "2272"
+      },
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.8323131815209387,
+      "timestamp": "04:04:45",
+      "anomaly_score": 5.43654196467193,
+      "processing_mode": "single_log"
+    },
+    {
+      "log": {
+        "content": "ALERT exited abnormally with [1]",
+        "event_template": "ALERT exited abnormally with <*>",
+        "level": "combo",
+        "component": "logrotate",
+        "line_id": "2787"
+      },
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.8301507257377945,
+      "timestamp": "04:04:00",
+      "anomaly_score": 5.427718002127035,
+      "processing_mode": "single_log"
+    }
+  ],
+  "sequential_anomalies": [
+    {
+      "logs": [
+        {
+          "content": "connection from 222.33.90.199 () at Mon Jun 20 03:40:59 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "1161",
+          "timestamp": "03:40:59"
+        },
+        {
+          "content": "session opened for user cyrus by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1162",
+          "timestamp": "04:02:54"
+        },
+        {
+          "content": "session closed for user cyrus",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1163",
+          "timestamp": "04:02:54"
+        },
+        {
+          "content": "ALERT exited abnormally with [1]",
+          "event_template": "ALERT exited abnormally with <*>",
+          "level": "combo",
+          "component": "logrotate",
+          "line_id": "1164",
+          "timestamp": "04:02:55"
+        },
+        {
+          "content": "session opened for user news by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1165",
+          "timestamp": "04:08:37"
+        },
+        {
+          "content": "session closed for user news",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1166",
+          "timestamp": "04:08:38"
+        },
+        {
+          "content": "Received SNMP packet(s) from 67.170.148.126",
+          "event_template": "Received SNMP packet(s) from <*>",
+          "level": "combo",
+          "component": "snmpd",
+          "line_id": "1167",
+          "timestamp": "04:44:39"
+        },
+        {
+          "content": "check pass; user unknown",
+          "event_template": "check pass; user unknown",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1168",
+          "timestamp": "09:20:05"
+        }
+      ],
+      "anomaly_type": "system_critical",
+      "severity": "Critical",
+      "confidence": 0.6759105523453345,
+      "timestamp": "03:40:59",
+      "sequence_length": 8,
+      "anomaly_score": 8.23407404808944,
+      "processing_mode": "sequential",
+      "non_normal_count": 1,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "Kerberos authentication failed",
+          "event_template": "Kerberos authentication failed",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1569",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Authentication failed from 163.27.187.39 (163.27.187.39): Software caused connection abort",
+          "event_template": "Authentication failed from <*> <*> Software caused connection abort",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1570",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Kerberos authentication failed",
+          "event_template": "Kerberos authentication failed",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1571",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Authentication failed from 163.27.187.39 (163.27.187.39): Software caused connection abort",
+          "event_template": "Authentication failed from <*> <*> Software caused connection abort",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1572",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Kerberos authentication failed",
+          "event_template": "Kerberos authentication failed",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1573",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Authentication failed from 163.27.187.39 (163.27.187.39): Software caused connection abort",
+          "event_template": "Authentication failed from <*> <*> Software caused connection abort",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1574",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Authentication failed from 163.27.187.39 (163.27.187.39): Software caused connection abort",
+          "event_template": "Authentication failed from <*> <*> Software caused connection abort",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1575",
+          "timestamp": "20:53:06"
+        },
+        {
+          "content": "Authentication failed from 163.27.187.39 (163.27.187.39): Software caused connection abort",
+          "event_template": "Authentication failed from <*> <*> Software caused connection abort",
+          "level": "combo",
+          "component": "klogind",
+          "line_id": "1576",
+          "timestamp": "20:53:06"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "20:53:06",
+      "sequence_length": 8,
+      "anomaly_score": 13.675096228101221,
+      "processing_mode": "sequential",
+      "non_normal_count": 3,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "session opened for user test by (uid=509)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1657",
+          "timestamp": "09:14:44"
+        },
+        {
+          "content": "session closed for user test",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1658",
+          "timestamp": "09:14:44"
+        },
+        {
+          "content": "session closed for user test",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1659",
+          "timestamp": "09:14:44"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1660",
+          "timestamp": "10:56:41"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1661",
+          "timestamp": "10:56:41"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1662",
+          "timestamp": "10:56:41"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1663",
+          "timestamp": "10:56:42"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1664",
+          "timestamp": "10:56:42"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 1.0,
+      "timestamp": "09:14:44",
+      "sequence_length": 8,
+      "anomaly_score": 6.993314734364656,
+      "processing_mode": "sequential",
+      "non_normal_count": 5,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1665",
+          "timestamp": "10:56:42"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1666",
+          "timestamp": "10:56:43"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1667",
+          "timestamp": "10:56:43"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1668",
+          "timestamp": "10:56:44"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=195.129.24.210  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1669",
+          "timestamp": "10:56:44"
+        },
+        {
+          "content": "session opened for user test by (uid=509)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1670",
+          "timestamp": "01:41:32"
+        },
+        {
+          "content": "session opened for user test by (uid=509)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1671",
+          "timestamp": "01:41:32"
+        },
+        {
+          "content": "session opened for user test by (uid=509)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1672",
+          "timestamp": "01:41:32"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.9724197156822305,
+      "timestamp": "10:56:42",
+      "sequence_length": 8,
+      "anomaly_score": 6.00825067630013,
+      "processing_mode": "sequential",
+      "non_normal_count": 5,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "session opened for user test by (uid=509)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1681",
+          "timestamp": "01:41:33"
+        },
+        {
+          "content": "session opened for user test by (uid=509)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1682",
+          "timestamp": "01:41:33"
+        },
+        {
+          "content": "session closed for user test",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1683",
+          "timestamp": "01:41:33"
+        },
+        {
+          "content": "session closed for user test",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1684",
+          "timestamp": "01:41:33"
+        },
+        {
+          "content": "session closed for user test",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "1685",
+          "timestamp": "01:41:33"
+        },
+        {
+          "content": "session opened for user cyrus by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1686",
+          "timestamp": "04:04:02"
+        },
+        {
+          "content": "session closed for user cyrus",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1687",
+          "timestamp": "04:04:02"
+        },
+        {
+          "content": "ALERT exited abnormally with [1]",
+          "event_template": "ALERT exited abnormally with <*>",
+          "level": "combo",
+          "component": "logrotate",
+          "line_id": "1688",
+          "timestamp": "04:04:03"
+        }
+      ],
+      "anomaly_type": "system_critical",
+      "severity": "Critical",
+      "confidence": 0.5014463954291697,
+      "timestamp": "01:41:33",
+      "sequence_length": 8,
+      "anomaly_score": 7.01242433679123,
+      "processing_mode": "sequential",
+      "non_normal_count": 1,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "connection from 62.99.164.82 (62.99.164.82.sh.interxion.inode.at) at Sun Jul  3 23:16:09 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "1761",
+          "timestamp": "23:16:09"
+        },
+        {
+          "content": "connection from 62.99.164.82 (62.99.164.82.sh.interxion.inode.at) at Sun Jul  3 23:16:09 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "1762",
+          "timestamp": "23:16:09"
+        },
+        {
+          "content": "connection from 62.99.164.82 (62.99.164.82.sh.interxion.inode.at) at Sun Jul  3 23:16:09 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "1763",
+          "timestamp": "23:16:09"
+        },
+        {
+          "content": "connection from 62.99.164.82 (62.99.164.82.sh.interxion.inode.at) at Sun Jul  3 23:16:09 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "1764",
+          "timestamp": "23:16:09"
+        },
+        {
+          "content": "session opened for user cyrus by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1765",
+          "timestamp": "04:03:06"
+        },
+        {
+          "content": "session closed for user cyrus",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1766",
+          "timestamp": "04:03:07"
+        },
+        {
+          "content": "ALERT exited abnormally with [1]",
+          "event_template": "ALERT exited abnormally with <*>",
+          "level": "combo",
+          "component": "logrotate",
+          "line_id": "1767",
+          "timestamp": "04:03:08"
+        },
+        {
+          "content": "session opened for user news by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "1768",
+          "timestamp": "04:08:48"
+        }
+      ],
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.6325040701342,
+      "timestamp": "23:16:09",
+      "sequence_length": 8,
+      "anomaly_score": 4.621215182617766,
+      "processing_mode": "sequential",
+      "non_normal_count": 1,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "connection from 217.187.83.139 () at Sun Jul 10 03:55:15 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "2081",
+          "timestamp": "03:55:15"
+        },
+        {
+          "content": "connection from 217.187.83.139 () at Sun Jul 10 03:55:15 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "2082",
+          "timestamp": "03:55:15"
+        },
+        {
+          "content": "session opened for user cyrus by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2083",
+          "timestamp": "04:04:31"
+        },
+        {
+          "content": "session closed for user cyrus",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2084",
+          "timestamp": "04:04:32"
+        },
+        {
+          "content": "cupsd shutdown succeeded",
+          "event_template": "cupsd shutdown succeeded",
+          "level": "combo",
+          "component": "cups",
+          "line_id": "2085",
+          "timestamp": "04:04:33"
+        },
+        {
+          "content": "cupsd startup succeeded",
+          "event_template": "cupsd startup succeeded",
+          "level": "combo",
+          "component": "cups",
+          "line_id": "2086",
+          "timestamp": "04:04:39"
+        },
+        {
+          "content": "restart.",
+          "event_template": "restart.",
+          "level": "combo",
+          "component": "syslogd 1.4.1",
+          "line_id": "2087",
+          "timestamp": "04:04:46"
+        },
+        {
+          "content": "ALERT exited abnormally with [1]",
+          "event_template": "ALERT exited abnormally with <*>",
+          "level": "combo",
+          "component": "logrotate",
+          "line_id": "2088",
+          "timestamp": "04:04:46"
+        }
+      ],
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.7819521653639534,
+      "timestamp": "03:55:15",
+      "sequence_length": 8,
+      "anomaly_score": 5.231042400816817,
+      "processing_mode": "sequential",
+      "non_normal_count": 1,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2137",
+          "timestamp": "16:01:43"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2138",
+          "timestamp": "16:01:44"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2139",
+          "timestamp": "16:01:45"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2140",
+          "timestamp": "16:01:45"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2141",
+          "timestamp": "16:01:46"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2142",
+          "timestamp": "16:01:47"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2143",
+          "timestamp": "16:01:48"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2144",
+          "timestamp": "16:01:48"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5412818199877715,
+      "timestamp": "16:01:43",
+      "sequence_length": 8,
+      "anomaly_score": 4.248980187189204,
+      "processing_mode": "sequential",
+      "non_normal_count": 8,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2153",
+          "timestamp": "16:02:01"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2154",
+          "timestamp": "16:02:01"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2155",
+          "timestamp": "16:02:01"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2156",
+          "timestamp": "16:02:02"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2157",
+          "timestamp": "16:02:08"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2158",
+          "timestamp": "16:02:09"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2159",
+          "timestamp": "16:02:10"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2160",
+          "timestamp": "16:02:10"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.5410415810463807,
+      "timestamp": "16:02:01",
+      "sequence_length": 8,
+      "anomaly_score": 4.247999885331852,
+      "processing_mode": "sequential",
+      "non_normal_count": 8,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2193",
+          "timestamp": "16:02:52"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2194",
+          "timestamp": "16:02:52"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2195",
+          "timestamp": "16:02:52"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2196",
+          "timestamp": "16:02:53"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2197",
+          "timestamp": "16:02:57"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2198",
+          "timestamp": "16:02:58"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2199",
+          "timestamp": "16:03:00"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2200",
+          "timestamp": "16:03:00"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.6697374558430781,
+      "timestamp": "16:02:52",
+      "sequence_length": 8,
+      "anomaly_score": 4.773147075734707,
+      "processing_mode": "sequential",
+      "non_normal_count": 8,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2201",
+          "timestamp": "16:03:01"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2202",
+          "timestamp": "16:03:03"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2203",
+          "timestamp": "16:03:05"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2204",
+          "timestamp": "16:03:05"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2205",
+          "timestamp": "16:03:05"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2206",
+          "timestamp": "16:03:05"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2207",
+          "timestamp": "16:03:10"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=150.183.249.110  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2208",
+          "timestamp": "16:03:11"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "Critical",
+      "confidence": 1.0,
+      "timestamp": "16:03:01",
+      "sequence_length": 8,
+      "anomaly_score": 10.651912258970288,
+      "processing_mode": "sequential",
+      "non_normal_count": 8,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2265",
+          "timestamp": "06:09:44"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2266",
+          "timestamp": "06:09:44"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2267",
+          "timestamp": "06:09:45"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2268",
+          "timestamp": "06:09:45"
+        },
+        {
+          "content": "authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=68.143.156.89.nw.nuvox.net  user=root",
+          "event_template": "authentication failure; logname= uid= <*> euid= <*> tty= NODEVssh ruser= <*> <*> user= <*>",
+          "level": "combo",
+          "component": "sshd(pam_unix)",
+          "line_id": "2269",
+          "timestamp": "06:09:45"
+        },
+        {
+          "content": "session opened for user cyrus by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2270",
+          "timestamp": "04:04:44"
+        },
+        {
+          "content": "session closed for user cyrus",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2271",
+          "timestamp": "04:04:45"
+        },
+        {
+          "content": "ALERT exited abnormally with [1]",
+          "event_template": "ALERT exited abnormally with <*>",
+          "level": "combo",
+          "component": "logrotate",
+          "line_id": "2272",
+          "timestamp": "04:04:45"
+        }
+      ],
+      "anomaly_type": "authentication_error",
+      "severity": "High",
+      "confidence": 0.8518879836950012,
+      "timestamp": "06:09:44",
+      "sequence_length": 8,
+      "anomaly_score": 5.516417503655907,
+      "processing_mode": "sequential",
+      "non_normal_count": 6,
+      "total_logs_in_sequence": 8
+    },
+    {
+      "logs": [
+        {
+          "content": "session opened for user cyrus by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2785",
+          "timestamp": "04:03:58"
+        },
+        {
+          "content": "session closed for user cyrus",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2786",
+          "timestamp": "04:03:59"
+        },
+        {
+          "content": "ALERT exited abnormally with [1]",
+          "event_template": "ALERT exited abnormally with <*>",
+          "level": "combo",
+          "component": "logrotate",
+          "line_id": "2787",
+          "timestamp": "04:04:00"
+        },
+        {
+          "content": "session opened for user news by (uid=0)",
+          "event_template": "session opened for user <*> by (uid= <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2788",
+          "timestamp": "04:09:32"
+        },
+        {
+          "content": "session closed for user news",
+          "event_template": "session closed for user <*>",
+          "level": "combo",
+          "component": "su(pam_unix)",
+          "line_id": "2789",
+          "timestamp": "04:09:33"
+        },
+        {
+          "content": "connection from 206.47.209.10 () at Mon Jul 25 06:39:18 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "2790",
+          "timestamp": "06:39:18"
+        },
+        {
+          "content": "connection from 206.47.209.10 () at Mon Jul 25 06:39:18 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "2791",
+          "timestamp": "06:39:18"
+        },
+        {
+          "content": "connection from 206.47.209.10 () at Mon Jul 25 06:39:18 2005",
+          "event_template": "connection from <*> <*> at <*> <*> <*> <*> <*>",
+          "level": "combo",
+          "component": "ftpd",
+          "line_id": "2792",
+          "timestamp": "06:39:18"
+        }
+      ],
+      "anomaly_type": "system_critical",
+      "severity": "High",
+      "confidence": 0.8253068224125151,
+      "timestamp": "04:03:58",
+      "sequence_length": 8,
+      "anomaly_score": 5.407952316351388,
+      "processing_mode": "sequential",
+      "non_normal_count": 1,
+      "total_logs_in_sequence": 8
+    }
+  ],
+  "summary": {
+    "total_single_anomalies": 56,
+    "total_sequential_anomalies": 13,
+    "processing_timestamp": "2025-06-13T11:41:52.857793",
+    "thresholds": {
+      "single_log_threshold": 4.159301018161285,
+      "sequential_threshold": 4.061539017781989
+    }
+  }
+}
